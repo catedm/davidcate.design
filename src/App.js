@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from "react";
+import Halo from "vanta/src/vanta.halo";
+import NET from "vanta/src/vanta.net";
+import TOPOLOGY from "vanta/src/vanta.topology";
+import Waves from "vanta/src/vanta.waves";
+import { Vanta, Grid, RightCol, LeftCol } from "./styles";
+import { Card, Button } from "./components";
 
-function App() {
+const App = () => {
+  const vantaEffects = [NET, Halo, Waves];
+  const [vantaEffect, setVantaEffect] = useState(0);
+  const myRef = useRef(null);
+
+  useEffect(() => {
+    vantaEffects[vantaEffect]({
+      el: myRef.current,
+      backgroundColor: 0x222426,
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0
+    });
+  }, [vantaEffect]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Vanta ref={myRef}>
+      <Grid>
+        <RightCol />
+        <LeftCol>
+          <Card />
+        </LeftCol>
+      </Grid>
+    </Vanta>
   );
-}
+};
 
-export default App;
+export { App };

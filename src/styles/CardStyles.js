@@ -1,29 +1,100 @@
 import styled from "styled-components";
-import { animated } from "react-spring";
 
-export const CardWrapper = styled.div`
-`;
+const getStyles = currentEffect => {
+  switch (currentEffect) {
+    case "NET":
+      return `
+        border: 2px solid #FFF;
+        color: #FFF;
+      `;
+    case "Halo":
+      return `
+        border: 2px solid #FF4389;
+        color: #FFF;
+      `;
+    case "Waves":
+      return `
+        border: 2px solid #FFF;
+        color: #FFF;
+      `;
+    case "CELLS":
+      return `
+        border: 2px solid #222326;
+        color: #222326;
+        
+        h1 {
+          border-bottom: 1px solid #222326;
+        }
+        
+        a {
+          color: #222326;
+        }
+      `;
+    case "Topology":
+      return `
+        border: 2px solid #222326;
+        color: #222326;
+        
+        h1 {
+          border-bottom: 1px solid #222326;
+        }
+        
+        a {
+          color: #222326;
+        }
+      `;
+  }
+};
 
-export const Card = styled(animated.div)`
+const BaseCard = styled.div`
   padding: 2rem;
-  color: white;
-  border: 2px solid white;
-  position: absolute;
-  justify-content: flex-start;
   border-radius: 1rem;
-  width: 50%;
-  height: 260px;
-  cursor: pointer;
-  will-change: transform, opacity;
+  border-top-left-radius: 0;
+  height: 575px;
+  border: 2px solid #fff;
+  color: #fff;
 `;
 
-export const Icons = styled.div`
+export const Card = styled(BaseCard)`
+  ${props => props.vantaEffect && getStyles(props.vantaEffect.name)}
+`;
+
+const getIconColor = currentEffect => {
+  switch (currentEffect) {
+    case "NET":
+      return `
+        color: #FFF;
+      `;
+    case "Halo":
+      return `
+        color: #FFF;
+      `;
+    case "Waves":
+      return `
+        color: #FFF;
+      `;
+    case "CELLS":
+      return `
+        color: #222326;
+      `;
+    case "Topology":
+      return `
+        color: #222326;
+      `;
+  }
+};
+
+const BaseIcon = styled.div`
   display: flex;
   font-size: 2rem;
-  a {
-    color: white;
-  }
+  
   i {
     margin-right: 2rem;
+  }
+`;
+
+export const Icons = styled(BaseIcon)`
+  a {
+    ${props => props.vantaEffect && getIconColor(props.vantaEffect.name)};
   }
 `;

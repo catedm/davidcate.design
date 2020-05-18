@@ -1,36 +1,134 @@
 import React, { useState, useEffect, useRef } from "react";
-import Halo from "vanta/src/vanta.halo";
 import NET from "vanta/src/vanta.net";
+import Halo from "vanta/src/vanta.halo";
 import TOPOLOGY from "vanta/src/vanta.topology";
 import Waves from "vanta/src/vanta.waves";
-import { Vanta, Grid, RightCol, LeftCol } from "./styles";
+import DOTS from "vanta/src/vanta.dots";
+import CELLS from "vanta/src/vanta.cells";
+import RINGS from "vanta/src/vanta.rings";
+import Fog from "vanta/src/vanta.fog";
+import Birds from "vanta/src/vanta.birds";
+import { Vanta, FlexWrapper, RightCol, LeftCol } from "./styles";
 import { Card, Button } from "./components";
 
 const App = () => {
-  const vantaEffects = [NET, Halo, Waves];
-  const [vantaEffect, setVantaEffect] = useState(0);
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const [index, setIndex] = useState(1);
   const myRef = useRef(null);
+  const commonSettings = {
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    scale: 1.0
+  };
+  const vantaEffects = [
+    {
+      name: "NET",
+      effect: NET,
+      settings: {
+        ...commonSettings,
+        backgroundColor: 0x222426
+      }
+    },
+    {
+      name: "Waves",
+      effect: Waves,
+      settings: {
+        ...commonSettings,
+        color: 0x460000
+      }
+    },
+    {
+      name: "Halo",
+      effect: Halo,
+      settings: {
+        ...commonSettings,
+        backgroundColor: 0x222426
+      }
+    },
+    {
+      name: "Topology",
+      effect: TOPOLOGY,
+      settings: {
+        ...commonSettings,
+        color: 0x393939,
+        backgroundColor: 0xffffff
+      }
+    },
+    {
+      name: "DOTS",
+      effect: DOTS,
+      settings: {
+        ...commonSettings,
+        backgroundColor: 0x0d1f2d,
+        color: 0xfae1df,
+        color2: 0xffffff,
+        spacing: 18.0
+      }
+    },
+    {
+      name: "CELLS",
+      effect: CELLS,
+      settings: {
+        ...commonSettings,
+        color1: 0x105c5c,
+        color2: 0xffffff
+      }
+    },
+    {
+      name: "Birds",
+      effect: Birds,
+      settings: {
+        ...commonSettings
+      }
+    }
+  ];
 
   useEffect(() => {
-    vantaEffects[vantaEffect]({
-      el: myRef.current,
-      backgroundColor: 0x222426,
-      mouseControls: true,
-      touchControls: true,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0
-    });
-  }, [vantaEffect]);
+    if (!vantaEffect) {
+      setVantaEffect(
+        vantaEffects[0].effect({
+          el: myRef.current,
+          ...vantaEffects[0].settings
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffects, vantaEffect]);
+
+  const changeEffect = vantaEffect => {
+    vantaEffect.destroy();
+    setVantaEffect(
+      vantaEffects[index].effect({
+        el: myRef.current,
+        ...vantaEffects[index].settings
+      })
+    );
+    setIndex((index + 1) % vantaEffects.length);
+  };
 
   return (
     <Vanta ref={myRef}>
-      <Grid>
-        <RightCol />
+      <FlexWrapper>
+        <RightCol vantaEffect={vantaEffects[index - 1]} />
         <LeftCol>
-          <Card />
+          <div
+            onClick={() => {
+              changeEffect(vantaEffect);
+            }}
+          >
+            <Button
+              changeEffect={changeEffect}
+              vantaEffects={vantaEffects}
+              vantaEffect={vantaEffects[index - 1]}
+            />
+          </div>
+          <Card vantaEffect={vantaEffects[index - 1]} />
         </LeftCol>
-      </Grid>
+      </FlexWrapper>
     </Vanta>
   );
 };

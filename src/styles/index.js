@@ -1,4 +1,5 @@
 export * from './Vanta'
-export * from './Grid'
+export * from './FlexWrapper'
 export * from './CardStyles'
 export * from './GlobalStyles'
+export * from './Button'

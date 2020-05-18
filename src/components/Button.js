@@ -1,15 +1,13 @@
 import React from "react";
+import { Button as ButtonWrapper } from "../styles";
 import "../styles/button.css";
 
-export const Button = ({ setVantaEffect, vantaEffect }) => {
+export const Button = ({ vantaEffect }) => {
   return (
-    <div style={{ position: 'relative' }}>
-      <div
-        onClick={() => setVantaEffect(vantaEffect === 0 ? 1 : 0)}
-        className="container"
-      >
+    <div style={{ position: "relative", marginBottom: "1rem" }}>
+      <div className="container">
         <div className="center">
-          <button className="btn">
+          <ButtonWrapper vantaEffect={vantaEffect}>
             <svg
               width="180px"
               height="60px"
@@ -26,7 +24,7 @@ export const Button = ({ setVantaEffect, vantaEffect }) => {
               />
             </svg>
             <span>SWITCH IT UP</span>
-          </button>
+          </ButtonWrapper>
         </div>
       </div>
     </div>

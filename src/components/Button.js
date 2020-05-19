@@ -1,6 +1,5 @@
 import React from "react";
 import { Button as ButtonWrapper } from "../styles";
-import "../styles/button.css";
 
 export const Button = ({ vantaEffect }) => {
   return (

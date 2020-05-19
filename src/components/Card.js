@@ -16,7 +16,11 @@ const Card = ({ vantaEffect }) => {
           >
             <i className={"fab fa-linkedin"} />
           </a>
-          <a rel="noopener noreferrer" href="https://github.com/catedm" target="_blank">
+          <a
+            rel="noopener noreferrer"
+            href="https://github.com/catedm"
+            target="_blank"
+          >
             <i className={"fab fa-github"} />
           </a>
           <a
@@ -28,8 +32,24 @@ const Card = ({ vantaEffect }) => {
           </a>
         </Icons>
         <p>
-          Current Employer: <a href="https://www.flexera.com/">Flexera</a>
+          Current Employer:{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.flexera.com/"
+          >
+            Flexera
+          </a>
         </p>
+        <i>
+          <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="#"
+          >
+            RESUME
+          </a>
+        </i>
       </CardFace>
     </>
   );

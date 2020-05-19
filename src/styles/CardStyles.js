@@ -53,6 +53,10 @@ const BaseCard = styled.div`
   height: 575px;
   border: 2px solid #fff;
   color: #fff;
+
+  @media (max-width: 710px) {
+    height: auto;
+  }
 `;
 
 export const Card = styled(BaseCard)`
@@ -87,7 +91,7 @@ const getIconColor = currentEffect => {
 const BaseIcon = styled.div`
   display: flex;
   font-size: 2rem;
-  
+
   i {
     margin-right: 2rem;
   }

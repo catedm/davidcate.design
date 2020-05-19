@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
         border-bottom: 1px solid #FFF;
         padding: 0;
         margin: 0;
-        font-size: 4vw;
+        font-size: 50px;
         font-family: 'Vollkorn', serif;
     }
     
@@ -25,15 +25,22 @@ export const GlobalStyles = createGlobalStyle`
         margin: 20px 0;
         font-family: 'Rubik', sans-serif;
         font-style: italic;
-        font-size: 1.7vw;
+        font-size: 30px;
     }
     
     p {
-        font-size: 1.5vw;
+        font-size: 25px;
         margin: 20px 0;
     }
+   
     
     a {
         color: #FFF;
+    }
+    
+    i {
+        a {
+            font-size: 25px;
+        }
     }
 `;

@@ -26,6 +26,10 @@ export const FlexWrapper = styled.div`
   align-items: center;
   width: 100vw;
   margin: 1rem;
+
+  @media (max-width: 710px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const BaseRightCol = styled.div`
@@ -33,10 +37,17 @@ const BaseRightCol = styled.div`
   background: url(${home2});
   background-size: cover;
   background-position: center;
-  width: 26%;
+  width: 370px;
   height: 650px;
   margin-right: 1rem;
   border-radius: 1rem;
+
+  @media (max-width: 710px) {
+    margin-right: 0;
+    margin-top: 1rem;
+    height: 350px;
+    width: 100%;
+  }
 `;
 
 export const RightCol = styled(BaseRightCol)`
@@ -45,6 +56,7 @@ export const RightCol = styled(BaseRightCol)`
 `;
 
 export const LeftCol = styled.div`
-  box-sizing: border-box;
-  height: 650px;
+  @media (max-width: 710px) {
+    width: 100%;
+  }
 `;

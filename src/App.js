@@ -5,10 +5,14 @@ import TOPOLOGY from "vanta/src/vanta.topology";
 import Waves from "vanta/src/vanta.waves";
 import DOTS from "vanta/src/vanta.dots";
 import CELLS from "vanta/src/vanta.cells";
-import RINGS from "vanta/src/vanta.rings";
-import Fog from "vanta/src/vanta.fog";
 import Birds from "vanta/src/vanta.birds";
-import { Vanta, FlexWrapper, RightCol, LeftCol } from "./styles";
+import {
+  Vanta,
+  FlexWrapper,
+  RightCol,
+  LeftCol,
+  ButtonContainer
+} from "./styles";
 import { Card, Button } from "./components";
 
 const App = () => {
@@ -115,7 +119,7 @@ const App = () => {
       <FlexWrapper>
         <RightCol vantaEffect={vantaEffects[index - 1]} />
         <LeftCol>
-          <div
+          <ButtonContainer
             onClick={() => {
               changeEffect(vantaEffect);
             }}
@@ -125,7 +129,7 @@ const App = () => {
               vantaEffects={vantaEffects}
               vantaEffect={vantaEffects[index - 1]}
             />
-          </div>
+          </ButtonContainer>
           <Card vantaEffect={vantaEffects[index - 1]} />
         </LeftCol>
       </FlexWrapper>

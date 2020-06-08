@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSpring } from "react-spring";
 import NET from "vanta/src/vanta.net";
 import Halo from "vanta/src/vanta.halo";
 import TOPOLOGY from "vanta/src/vanta.topology";
@@ -11,11 +12,13 @@ import {
   FlexWrapper,
   RightCol,
   LeftCol,
-  ButtonContainer
+  ButtonContainer,
+  ResumeWrapper
 } from "./styles";
-import { Card, Button } from "./components";
+import { Card, Button, Resume } from "./components";
 
 const App = () => {
+  const [resumeLayout, setResumeLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
   const myRef = useRef(null);
@@ -98,9 +101,6 @@ const App = () => {
         })
       );
     }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
   }, [vantaEffects, vantaEffect]);
 
   const changeEffect = vantaEffect => {
@@ -114,26 +114,46 @@ const App = () => {
     setIndex((index + 1) % vantaEffects.length);
   };
 
+  const props = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { tension: 140, duration: 2000 }
+  });
+
+  const animatedProps = useSpring({
+    right: resumeLayout ? 0 : -3000,
+    config: { tension: 140, friction: 25, mass: 1 }
+  });
+
   return (
-    <Vanta ref={myRef}>
-      <FlexWrapper>
-        <RightCol vantaEffect={vantaEffects[index - 1]} />
-        <LeftCol>
-          <ButtonContainer
-            onClick={() => {
-              changeEffect(vantaEffect);
-            }}
-          >
-            <Button
-              changeEffect={changeEffect}
-              vantaEffects={vantaEffects}
+    <>
+      <ResumeWrapper style={animatedProps}>
+        <Resume setResumeLayout={setResumeLayout} />
+      </ResumeWrapper>
+      <Vanta ref={myRef}>
+        <FlexWrapper style={props}>
+          <RightCol vantaEffect={vantaEffects[index - 1]} />
+          <LeftCol>
+            <ButtonContainer
+              onClick={() => {
+                changeEffect(vantaEffect);
+              }}
+            >
+              <Button
+                changeEffect={changeEffect}
+                vantaEffects={vantaEffects}
+                vantaEffect={vantaEffects[index - 1]}
+              />
+            </ButtonContainer>
+            <Card
+              setResumeLayout={setResumeLayout}
+              resumeLayout={resumeLayout}
               vantaEffect={vantaEffects[index - 1]}
             />
-          </ButtonContainer>
-          <Card vantaEffect={vantaEffects[index - 1]} />
-        </LeftCol>
-      </FlexWrapper>
-    </Vanta>
+          </LeftCol>
+        </FlexWrapper>
+      </Vanta>
+    </>
   );
 };
 

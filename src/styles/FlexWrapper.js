@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import home2 from "../assets/home.jpg";
+import { animated } from "react-spring";
 
 const getBorder = currentEffect => {
   switch (currentEffect) {
@@ -20,7 +21,7 @@ const getBorder = currentEffect => {
   }
 };
 
-export const FlexWrapper = styled.div`
+export const FlexWrapper = styled(animated.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +31,13 @@ export const FlexWrapper = styled.div`
   @media (max-width: 710px) {
     flex-direction: column-reverse;
   }
+`;
+
+export const ResumeWrapper = styled(animated.div)`
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const BaseRightCol = styled.div`

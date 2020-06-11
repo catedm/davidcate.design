@@ -1,7 +1,7 @@
 import React from "react";
 import { Card as CardFace, Icons } from "../styles";
 
-const Card = ({ vantaEffect, setResumeLayout, resumeLayout }) => {
+const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
   return (
     <>
       <CardFace vantaEffect={vantaEffect}>
@@ -41,7 +41,12 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout }) => {
             Flexera
           </a>
         </p>
-        <i onClick={() => setResumeLayout(!resumeLayout)}>
+        <i
+          onClick={() => {
+            hideContent();
+            setResumeLayout(true);
+          }}
+        >
           <a target="_blank" rel="noopener noreferrer">
             RESUME
           </a>

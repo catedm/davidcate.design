@@ -33,13 +33,6 @@ export const FlexWrapper = styled(animated.div)`
   }
 `;
 
-export const ResumeWrapper = styled(animated.div)`
-  position: absolute;
-  z-index: 10;
-  width: 100vw;
-  height: 100vh;
-`;
-
 const BaseRightCol = styled.div`
   border: 2px solid #fff;
   background: url(${home2});

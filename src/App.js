@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 import NET from "vanta/src/vanta.net";
 import Halo from "vanta/src/vanta.halo";
 import TOPOLOGY from "vanta/src/vanta.topology";
@@ -15,13 +15,16 @@ import {
   ButtonContainer,
   ResumeWrapper
 } from "./styles";
-import { Card, Button, Resume } from "./components";
+import { Card, Button } from "./components";
+import Resume from "./components/Resume";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
-  const myRef = useRef(null);
+  const vantaRef = useRef(null);
+  const flexRef = useRef(null);
+  const resumeRef = useRef(null);
   const commonSettings = {
     mouseControls: true,
     touchControls: true,
@@ -96,7 +99,7 @@ const App = () => {
     if (!vantaEffect) {
       setVantaEffect(
         vantaEffects[0].effect({
-          el: myRef.current,
+          el: vantaRef.current,
           ...vantaEffects[0].settings
         })
       );
@@ -107,7 +110,7 @@ const App = () => {
     vantaEffect.destroy();
     setVantaEffect(
       vantaEffects[index].effect({
-        el: myRef.current,
+        el: vantaRef.current,
         ...vantaEffects[index].settings
       })
     );
@@ -115,23 +118,21 @@ const App = () => {
   };
 
   const props = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: { tension: 140, duration: 2000 }
+    opacity: resumeLayout ? 0 : 1,
+    ...config.wobbly
   });
 
-  const animatedProps = useSpring({
-    right: resumeLayout ? 0 : -3000,
-    config: { tension: 140, friction: 25, mass: 1 }
-  });
+  const hideContent = () => {
+    setTimeout(() => {
+      flexRef.current.style.display = "none";
+    }, 500);
+  };
 
   return (
     <>
-      <ResumeWrapper style={animatedProps}>
-        <Resume setResumeLayout={setResumeLayout} />
-      </ResumeWrapper>
-      <Vanta ref={myRef}>
-        <FlexWrapper style={props}>
+      <Vanta ref={vantaRef}>
+        {resumeLayout && <Resume />}
+        <FlexWrapper ref={flexRef} style={props}>
           <RightCol vantaEffect={vantaEffects[index - 1]} />
           <LeftCol>
             <ButtonContainer
@@ -146,6 +147,7 @@ const App = () => {
               />
             </ButtonContainer>
             <Card
+              hideContent={hideContent}
               setResumeLayout={setResumeLayout}
               resumeLayout={resumeLayout}
               vantaEffect={vantaEffects[index - 1]}

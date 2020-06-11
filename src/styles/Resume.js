@@ -1,4 +1,12 @@
 import styled from "styled-components";
+import {animated} from "react-spring";
+
+export const ResumeWrapper = styled(animated.div)`
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+`;
 
 export const ResumeContainer = styled.div`
   display: grid;

@@ -12,11 +12,9 @@ import {
   FlexWrapper,
   RightCol,
   LeftCol,
-  ButtonContainer,
-  ResumeWrapper
+  ButtonContainer
 } from "./styles";
-import { Card, Button } from "./components";
-import Resume from "./components/Resume";
+import { Card, Button, Resume } from "./components";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
@@ -24,7 +22,6 @@ const App = () => {
   const [index, setIndex] = useState(1);
   const vantaRef = useRef(null);
   const flexRef = useRef(null);
-  const resumeRef = useRef(null);
   const commonSettings = {
     mouseControls: true,
     touchControls: true,
@@ -128,10 +125,16 @@ const App = () => {
     }, 500);
   };
 
+  const showContent = () => {
+    flexRef.current.style.display = "flex";
+  };
+
   return (
     <>
       <Vanta ref={vantaRef}>
-        {resumeLayout && <Resume />}
+        {resumeLayout && (
+          <Resume showContent={showContent} setResumeLayout={setResumeLayout} />
+        )}
         <FlexWrapper ref={flexRef} style={props}>
           <RightCol vantaEffect={vantaEffects[index - 1]} />
           <LeftCol>

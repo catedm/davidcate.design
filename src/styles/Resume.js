@@ -2,46 +2,35 @@ import styled from "styled-components";
 import {animated} from "react-spring";
 
 export const ResumeWrapper = styled(animated.div)`
-  position: absolute;
-  z-index: 10;
+  z-index: 1;
   width: 100vw;
-  height: 100vh;
+  display: none;
 `;
 
 export const ResumeContainer = styled.div`
+  color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 1rem;
   grid-template-areas: "general general eductation eductation" "appnet appnet e-360 e-360" "risc risc flexera flexera";
   justify-items: center;
-  background: url("http://unsplash.it/1200x800") center center no-repeat;
-  background-size: cover;
   margin: 3rem;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
-    z-index: -1;
-  }
 
   div {
     border: 2px solid #fff;
     width: 100%;
-    height: 250px;
+    padding: 2rem;
   }
 
   .general {
     grid-area: general;
+    border-top-left-radius: 10px;
   }
 
   .eductation {
     grid-area: eductation;
+    border-top-right-radius: 10px;
   }
 
   .appnet {
@@ -54,9 +43,11 @@ export const ResumeContainer = styled.div`
 
   .flexera {
     grid-area: flexera;
+    border-bottom-right-radius: 10px;
   }
 
   .risc {
     grid-area: risc;
+    border-bottom-left-radius: 10px;
   }
 `;

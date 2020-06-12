@@ -18,7 +18,6 @@ export const ResumeContainer = styled.div`
   margin: 3rem;
 
   div {
-    border: 2px solid #fff;
     width: 100%;
     padding: 2rem;
   }

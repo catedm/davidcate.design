@@ -13,6 +13,10 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
     
+    .vanta-canvas {
+      z-index: -1 !important;
+    }
+    
     h1 {
         border-bottom: 1px solid #FFF;
         padding: 0;

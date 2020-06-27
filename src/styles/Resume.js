@@ -1,52 +1,23 @@
 import styled from "styled-components";
-import {animated} from "react-spring";
+import { motion } from "framer-motion";
 
-export const ResumeWrapper = styled(animated.div)`
-  z-index: 1;
-  width: 100vw;
-  display: none;
+export const ResumeContainer = styled(motion.ul)`
+  width: 550px;
+  height: 500px;
+  display: grid;
+  overflow: hidden;
+  margin: 0;
+  list-style: none;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
 `;
 
-export const ResumeContainer = styled.div`
-  color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 1rem;
-  grid-template-areas: "general general eductation eductation" "appnet appnet e-360 e-360" "risc risc flexera flexera";
-  justify-items: center;
-  margin: 3rem;
-
-  div {
-    width: 100%;
-    padding: 2rem;
-  }
-
-  .general {
-    grid-area: general;
-    border-top-left-radius: 10px;
-  }
-
-  .eductation {
-    grid-area: eductation;
-    border-top-right-radius: 10px;
-  }
-
-  .appnet {
-    grid-area: appnet;
-  }
-
-  .e-360 {
-    grid-area: e-360;
-  }
-
-  .flexera {
-    grid-area: flexera;
-    border-bottom-right-radius: 10px;
-  }
-
-  .risc {
-    grid-area: risc;
-    border-bottom-left-radius: 10px;
-  }
+export const Item = styled(motion.li)`
+  background: white;
+  border-radius: 50px;
+  padding: 2rem;
 `;

@@ -24,7 +24,7 @@ const getBorder = currentEffect => {
 export const FlexWrapper = styled(animated.div)`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: ${props => props.resumeLayout ? 'none' : 'center'};
   width: 100vw;
   margin: 1rem;
 

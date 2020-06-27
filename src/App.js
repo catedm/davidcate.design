@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSpring, config } from "react-spring";
 import NET from "vanta/src/vanta.net";
 import Halo from "vanta/src/vanta.halo";
 import TOPOLOGY from "vanta/src/vanta.topology";
@@ -114,15 +113,8 @@ const App = () => {
     setIndex((index + 1) % vantaEffects.length);
   };
 
-  const props = useSpring({
-    opacity: resumeLayout ? 0 : 1,
-    ...config.wobbly
-  });
-
   const hideContent = () => {
-    setTimeout(() => {
-      flexRef.current.style.display = "none";
-    }, 500);
+    flexRef.current.style.display = "none";
   };
 
   const showContent = () => {
@@ -133,9 +125,14 @@ const App = () => {
     <>
       <Vanta ref={vantaRef}>
         {resumeLayout && (
-          <Resume showContent={showContent} setResumeLayout={setResumeLayout} />
+          <FlexWrapper resumeLayout={resumeLayout}>
+            <Resume
+              showContent={showContent}
+              setResumeLayout={setResumeLayout}
+            />
+          </FlexWrapper>
         )}
-        <FlexWrapper ref={flexRef} style={props}>
+        <FlexWrapper resumeLayout={resumeLayout} ref={flexRef}>
           <RightCol vantaEffect={vantaEffects[index - 1]} />
           <LeftCol>
             <ButtonContainer

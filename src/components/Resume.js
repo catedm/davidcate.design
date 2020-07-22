@@ -1,5 +1,4 @@
 import * as React from "react";
-import { motion } from "framer-motion";
 import { ResumeContainer, Item } from "../styles";
 
 const container = {
@@ -25,7 +24,14 @@ const item = {
 
 export const Resume = () => (
   <ResumeContainer variants={container} initial="hidden" animate="visible">
-    <Item variants={item}>Education</Item>
+    <Item col={'left'} variants={item}>
+      <h1>Education</h1>
+      <p>Appalachian State University</p>
+    </Item>
+    <Item variants={item}>Skillsddd:</Item>
+    <Item variants={item}>Skillsddd:</Item>
+    <Item variants={item}>Skillsddd:</Item>
+    <Item variants={item}>Skillsddd:</Item>
     <Item variants={item}>Skillsddd:</Item>
   </ResumeContainer>
 );

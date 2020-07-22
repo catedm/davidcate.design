@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import home2 from "../assets/home.jpg";
-import { animated } from "react-spring";
+import { motion } from "framer-motion";
 
 const getBorder = currentEffect => {
   switch (currentEffect) {
@@ -21,7 +21,7 @@ const getBorder = currentEffect => {
   }
 };
 
-export const FlexWrapper = styled(animated.div)`
+export const FlexWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: ${props => props.resumeLayout ? 'none' : 'center'};

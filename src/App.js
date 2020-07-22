@@ -121,6 +121,14 @@ const App = () => {
     flexRef.current.style.display = "flex";
   };
 
+  const wrapper = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    transition: {
+      delay: 0.3,
+    }
+  };
+
   return (
     <>
       <Vanta ref={vantaRef}>
@@ -132,7 +140,13 @@ const App = () => {
             />
           </FlexWrapper>
         )}
-        <FlexWrapper resumeLayout={resumeLayout} ref={flexRef}>
+        <FlexWrapper
+          variants={wrapper}
+          initial="hidden"
+          animate="visible"
+          resumeLayout={resumeLayout}
+          ref={flexRef}
+        >
           <RightCol vantaEffect={vantaEffects[index - 1]} />
           <LeftCol>
             <ButtonContainer

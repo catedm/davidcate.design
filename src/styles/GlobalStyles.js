@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     p {
-        font-size: 25px;
+        font-size: 1.6rem;
         margin: 20px 0;
     }
    

@@ -17,7 +17,7 @@ export const ResumeContainer = styled(motion.ul)`
 
 export const Item = styled(motion.li)`
   border: 2px solid #fff;
-  border-radius: ${props => props.col === 'left' ? '0px 50px 0px 50px' : '50px'};
+  border-radius: ${props => props.col === 'left' ? '50px 0 0 50px' : '0 50px 50px 0'};
   color: #fff;
   padding: 2rem;
 `;

@@ -26,12 +26,14 @@ export const Resume = () => (
   <ResumeContainer variants={container} initial="hidden" animate="visible">
     <Item col={'left'} variants={item}>
       <h1>Education</h1>
-      <p>Appalachian State University</p>
+      <h2>Appalachian State University</h2>
+      <p>BS: Graphic Arts & Imaging Technology</p>
+      <p>Minor: General Business</p>
     </Item>
     <Item variants={item}>Skillsddd:</Item>
+    <Item col={'left'} variants={item}>Skillsddd:</Item>
     <Item variants={item}>Skillsddd:</Item>
-    <Item variants={item}>Skillsddd:</Item>
-    <Item variants={item}>Skillsddd:</Item>
+    <Item col={'left'} variants={item}>Skillsddd:</Item>
     <Item variants={item}>Skillsddd:</Item>
   </ResumeContainer>
 );

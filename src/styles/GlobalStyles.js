@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
         border-bottom: 1px solid #FFF;
         padding: 0;
         margin: 0;
-        font-size: 50px;
+        font-size: 3rem;
         font-family: 'Vollkorn', serif;
     }
     
@@ -29,11 +29,11 @@ export const GlobalStyles = createGlobalStyle`
         margin: 20px 0;
         font-family: 'Rubik', sans-serif;
         font-style: italic;
-        font-size: 30px;
+        font-size: 1.6rem;
     }
     
     p {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         margin: 20px 0;
     }
    

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const getStyles = currentEffect => {
+  // eslint-disable-next-line default-case
   switch (currentEffect) {
     case "NET":
       return `

@@ -1,5 +1,6 @@
 import React from "react";
 import { Card as CardFace, Icons } from "../styles";
+import Resume from '../assets/david-cate-resume.pdf'
 
 const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
   return (
@@ -41,16 +42,11 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
             Flexera
           </a>
         </p>
-        <i
-          onClick={() => {
-            hideContent();
-            setResumeLayout(true);
-          }}
-        >
-          <a target="_blank" rel="noopener noreferrer">
+        <p style={{ fontStyle: 'italic' }}>
+          <a href={Resume} target="_blank" rel="noopener noreferrer">
             RESUME
           </a>
-        </i>
+        </p>
       </CardFace>
     </>
   );

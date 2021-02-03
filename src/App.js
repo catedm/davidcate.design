@@ -140,34 +140,36 @@ const App = () => {
             />
           </FlexWrapper>
         )}
-        <FlexWrapper
-          variants={wrapper}
-          initial="hidden"
-          animate="visible"
-          resumeLayout={resumeLayout}
-          ref={flexRef}
-        >
-          <RightCol vantaEffect={vantaEffects[index - 1]} />
-          <LeftCol>
-            <ButtonContainer
-              onClick={() => {
-                changeEffect(vantaEffect);
-              }}
-            >
-              <Button
-                changeEffect={changeEffect}
-                vantaEffects={vantaEffects}
+        {!resumeLayout && (
+          <FlexWrapper
+            variants={wrapper}
+            initial="hidden"
+            animate="visible"
+            resumeLayout={resumeLayout}
+            ref={flexRef}
+          >
+            <RightCol vantaEffect={vantaEffects[index - 1]} />
+            <LeftCol>
+              <ButtonContainer
+                onClick={() => {
+                  changeEffect(vantaEffect);
+                }}
+              >
+                <Button
+                  changeEffect={changeEffect}
+                  vantaEffects={vantaEffects}
+                  vantaEffect={vantaEffects[index - 1]}
+                />
+              </ButtonContainer>
+              <Card
+                hideContent={hideContent}
+                setResumeLayout={setResumeLayout}
+                resumeLayout={resumeLayout}
                 vantaEffect={vantaEffects[index - 1]}
               />
-            </ButtonContainer>
-            <Card
-              hideContent={hideContent}
-              setResumeLayout={setResumeLayout}
-              resumeLayout={resumeLayout}
-              vantaEffect={vantaEffects[index - 1]}
-            />
-          </LeftCol>
-        </FlexWrapper>
+            </LeftCol>
+          </FlexWrapper>
+        )}
       </Vanta>
     </>
   );

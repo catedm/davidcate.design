@@ -43,7 +43,7 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
           </a>
         </p>
         <p style={{ fontStyle: 'italic' }}>
-          <a href={Resume} target="_blank" rel="noopener noreferrer">
+          <a onClick={() => setResumeLayout(true)}>
             RESUME
           </a>
         </p>

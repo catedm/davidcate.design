@@ -6,6 +6,7 @@ import Waves from "vanta/src/vanta.waves";
 import DOTS from "vanta/src/vanta.dots";
 import CELLS from "vanta/src/vanta.cells";
 import Birds from "vanta/src/vanta.birds";
+import Fog from "vanta/src/vanta.fog";
 import {
   Vanta,
   FlexWrapper,
@@ -16,7 +17,7 @@ import {
 import { Card, Button, Resume } from "./components";
 
 const App = () => {
-  const [resumeLayout, setResumeLayout] = useState(false);
+  const [resumeLayout, setResumeLayout] = useState(true);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
   const vantaRef = useRef(null);
@@ -30,19 +31,19 @@ const App = () => {
   };
   const vantaEffects = [
     {
-      name: "NET",
-      effect: NET,
-      settings: {
-        ...commonSettings,
-        backgroundColor: 0x222426
-      }
-    },
-    {
       name: "Waves",
       effect: Waves,
       settings: {
         ...commonSettings,
         color: 0x460000
+      }
+    },
+    {
+      name: "NET",
+      effect: NET,
+      settings: {
+        ...commonSettings,
+        backgroundColor: 0x222426
       }
     },
     {
@@ -85,6 +86,13 @@ const App = () => {
     {
       name: "Birds",
       effect: Birds,
+      settings: {
+        ...commonSettings
+      }
+    },
+    {
+      name: "Fog",
+      effect: Fog,
       settings: {
         ...commonSettings
       }
@@ -156,7 +164,6 @@ const App = () => {
                 }}
               >
                 <Button
-                  changeEffect={changeEffect}
                   vantaEffects={vantaEffects}
                   vantaEffect={vantaEffects[index - 1]}
                 />

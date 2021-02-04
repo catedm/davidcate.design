@@ -17,7 +17,7 @@ import {
 import { Card, Button, Resume } from "./components";
 
 const App = () => {
-  const [resumeLayout, setResumeLayout] = useState(true);
+  const [resumeLayout, setResumeLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
   const vantaRef = useRef(null);

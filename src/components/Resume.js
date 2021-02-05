@@ -121,20 +121,42 @@ export const Resume = ({ setResumeLayout }) => {
       </Item>
       <Item variants={experience} animate={hide ? 'hidden' : 'visible'}>
         <h1>Experience</h1>
-        <h2>Web Designer & Front End Developer</h2>
-        <h2>Internet Marketing Programmer</h2>
-        <h2>Software Development Engineer</h2>
+        <h3>Web Designer & Front End Developer</h3>
+        <p className={'small'}>Appnet New Media Studio, Boone NC</p>
+        <p className={'small'}>May 2015 - April 2016</p>
+        <h3>Internet Marketing Programmer</h3>
+        <p className={'small'}>Element-360, Asheville NC</p>
+        <p className={'small'}>April 2016 – April 2019</p>
+        <h3>Software Development Engineer</h3>
+        <p className={'small'}>Flexera, Asheville NC</p>
+        <p className={'small'}>April 2019 - Present</p>
       </Item>
       <Item col={'left'} variants={references} animate={hide ? 'hidden' : 'visible'}>
-        <h2>Appnet New Media Studio, Boone NC</h2>
-        <p>BS: Graphic Arts & Imaging Technology</p>
-        <p>Minor: General Business</p>
+        <h1>References</h1>
+        <h3>Mike Doble - Owner, Appnet</h3>
+        <p className={'small'}>mike@appnet.com</p>
+        <p className={'small'}>888.926.4584</p>
+        <h3>Chad Martin - Owner, Element-360</h3>
+        <p className={'small'}>chad@element-360.com</p>
+        <p className={'small'}>775.770.4450</p>
+        <h3>Dr. Jonas Goldstein - Interventional Radiologist</h3>
+        <p className={'small'}>jonas.goldstein@msj.com</p>
+        <p className={'small'}>775.770.4450</p>
       </Item>
       <Item variants={skills} animate={hide ? 'hidden' : 'visible'}>
         <h1>Skills</h1>
-        <p>Front End Development / React / Redux/ JS / Styled Components / Typescript / Cypress / jQuery / Travis-CI / AWS / CSS3 /
-          HTML5 / Git</p>
+        <p className={'skill'}>Front End Development</p>
+        <p className={'skill'}>React // Redux</p>
+        <p className={'skill'}>Javascript // Typescript</p>
+        <p className={'skill'}>HTML & CSS</p>
+        <p className={'skill'}>Styled Components</p>
+        <p className={'skill'}>Jest // Enzyme // Cypress</p>
+        <p className={'skill'}>GIT // Travis-CI</p>
+        <p className={'skill'}>AWS</p>
       </Item>
     </ResumeContainer>
   )
 };
+
+// / React / Redux/ JS / Styled Components / Typescript / Cypress / jQuery / Travis-CI / AWS / CSS3 /
+// HTML5 / Git

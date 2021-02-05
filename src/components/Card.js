@@ -42,10 +42,8 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
             Flexera
           </a>
         </p>
-        <p style={{ fontStyle: 'italic' }}>
-          <a onClick={() => setResumeLayout(true)}>
+        <p onClick={() => setResumeLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>
             RESUME
-          </a>
         </p>
       </CardFace>
     </>

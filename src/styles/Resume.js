@@ -5,7 +5,6 @@ export const ResumeContainer = styled(motion.ul)`
   height: auto;
   width: 50vw;
   display: grid;
-  overflow: scroll;
   margin: 0;
   list-style: none;
   grid-template-columns: repeat(2, 1fr);
@@ -15,7 +14,12 @@ export const ResumeContainer = styled(motion.ul)`
   background: rgba(0, 0, 0, 0.8);
   border-radius: 50px;
   
+  @media (max-width: 1300px) {
+    width: 90vw;
+  }
+  
   @media (max-width: 710px) {
+    width: 87vw;
     grid-template-columns: repeat(1, 1fr);
   }
 `;
@@ -24,7 +28,6 @@ export const Item = styled(motion.li)`
   border: 2px solid #fff;
   border-radius: ${props => props.col === 'left' ? '50px 0 0 50px' : '0 50px 50px 0'};
   color: #fff;
-  cursor: pointer;
   padding: 2rem;
   transition: background 400ms ease;
   

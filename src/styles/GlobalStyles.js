@@ -32,9 +32,28 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1.6rem;
     }
     
+      h3 {
+        margin: 10px 0 0 0;
+        font-family: 'Rubik', sans-serif;
+        font-size: 1.2rem;
+    }
+    
     p {
         font-size: 1.5rem;
         margin: 20px 0;
+        
+        &.small {
+          margin: 0;
+          font-size: 1rem;
+        }
+        
+        &.skill {
+          margin: 10px 0 0 0;
+          font-style: italic;
+          font-weight: bold;
+          font-size: 1.3rem;
+          font-family: 'Rubik', sans-serif;
+        }
     }
    
     

@@ -15,9 +15,9 @@ const container = {
   }
 };
 
-const variants = {
-  hide: { y: 20, opacity: 0 }
-}
+// const variants = {
+//   hide: { y: 20, opacity: 0 }
+// }
 
 // const item = {
 //   hidden: { y: 20, opacity: 0 },
@@ -109,7 +109,7 @@ export const Resume = ({ setResumeLayout }) => {
     return () => {
       document.body.removeEventListener('click', closeResumeCallback);
     }
-  }, []);
+  });
 
   return (
     <ResumeContainer variants={container}  animate={hide ? 'hidden' : 'visible'} initial="hidden">

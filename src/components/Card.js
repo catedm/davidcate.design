@@ -1,6 +1,5 @@
 import React from "react";
 import { Card as CardFace, Icons } from "../styles";
-import Resume from '../assets/david-cate-resume.pdf'
 
 const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
   return (

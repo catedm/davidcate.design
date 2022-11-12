@@ -15,11 +15,29 @@ import {
   ButtonContainer
 } from "./styles";
 import { Card, Button, Resume } from "./components";
+import { ChromePicker } from 'react-color';
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
+  const initialColor = {
+    hex: '#460000',
+    rgb: {
+      r: 51,
+      g: 51,
+      b: 51,
+      a: 1,
+    },
+    hsl: {
+      h: 0,
+      s: 0,
+      l: .20,
+      a: 1,
+    },
+  }
+  const [color, setColor] = useState(initialColor);
+  const [waveColor, setWaveColor] = useState(Number(`0x${color.hex.split('#')[1]}`));
   const vantaRef = useRef(null);
   const flexRef = useRef(null);
   const commonSettings = {
@@ -35,7 +53,7 @@ const App = () => {
       effect: Waves,
       settings: {
         ...commonSettings,
-        color: 0x460000
+        color: waveColor
       }
     },
     {
@@ -129,6 +147,23 @@ const App = () => {
     flexRef.current.style.display = "flex";
   };
 
+  const handleColorChange = (color) => {
+    console.log(color);
+    setColor({...color});
+    setWaveColor(Number(`0x${color.hex.split('#')[1]}`));
+    console.log(vantaEffects[index].settings)
+    // setVantaEffect(
+    //   vantaEffects[index].effect({
+    //     el: vantaRef.current,
+    //     ...vantaEffects[index].settings
+    //   })
+    // );
+
+    setVantaEffect(() => console.log(vantaEffect))
+    console.log(vantaEffect.options.color)
+  }
+
+
   const wrapper = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -156,6 +191,10 @@ const App = () => {
             resumeLayout={resumeLayout}
             ref={flexRef}
           >
+            <ChromePicker
+              color={color}
+              onChangeComplete={handleColorChange}
+            />
             <RightCol vantaEffect={vantaEffects[index - 1]} />
             <LeftCol>
               <ButtonContainer

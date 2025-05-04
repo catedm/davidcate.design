@@ -121,15 +121,15 @@ export const Resume = ({ setResumeLayout }) => {
       </Item>
       <Item variants={experience} animate={hide ? 'hidden' : 'visible'}>
         <h1>Experience</h1>
-        <h3>Web Designer & Front End Developer</h3>
-        <p className={'small'}>Appnet New Media Studio, Boone NC</p>
-        <p className={'small'}>May 2015 - April 2016</p>
-        <h3>Internet Marketing Programmer</h3>
-        <p className={'small'}>Element-360, Asheville NC</p>
-        <p className={'small'}>April 2016 – April 2019</p>
-        <h3>Software Development Engineer</h3>
-        <p className={'small'}>Flexera, Asheville NC</p>
-        <p className={'small'}>April 2019 - Present</p>
+        <h3>Senior Software Engineer</h3>
+        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://flexera.com">Flexera</a></p>
+        <p className={'small'}>April 2019 - Feb 2023</p>
+        <h3>Co-founder / Tech Architect</h3>
+        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://copyandpost.com">Copy and Post</a></p>
+        <p className={'small'}>March 2021 - March 2024</p>
+        <h3>Senior Software Engineer</h3>
+        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://smartsheet.com">Smartsheet</a></p>
+        <p className={'small'}>Feb 2023 - Present</p>
       </Item>
       <Item col={'left'} variants={references} animate={hide ? 'hidden' : 'visible'}>
         <h1>References</h1>
@@ -145,14 +145,15 @@ export const Resume = ({ setResumeLayout }) => {
       </Item>
       <Item variants={skills} animate={hide ? 'hidden' : 'visible'}>
         <h1>Skills</h1>
-        <p className={'skill'}>Front End Development</p>
-        <p className={'skill'}>React // Redux</p>
-        <p className={'skill'}>Javascript // Typescript</p>
-        <p className={'skill'}>HTML & CSS</p>
-        <p className={'skill'}>Styled Components</p>
-        <p className={'skill'}>Jest // Enzyme // Cypress</p>
-        <p className={'skill'}>GIT // Travis-CI</p>
-        <p className={'skill'}>AWS</p>
+        <p className={'skill'}>React</p>
+        <p className={'skill'}>Serverless architecture</p>
+        <p className={'skill'}>Typescript</p>
+        <p className={'skill'}>Stripe</p>
+        <p className={'skill'}>Authentication</p>
+        <p className={'skill'}>PostgreSQL</p>
+        <p className={'skill'}>Vercel</p>
+        <p className={'skill'}>Accessibility</p>
+        <p className={'skill'}>AI Integrations</p>
       </Item>
     </ResumeContainer>
   )

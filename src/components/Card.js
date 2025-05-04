@@ -6,8 +6,7 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
     <>
       <CardFace vantaEffect={vantaEffect}>
         <h1>David Cate</h1>
-        <h2>Front End Developer</h2>
-        <p>React // Typescript</p>
+        <h2>Full stack engineer</h2>
         <Icons vantaEffect={vantaEffect}>
           <a
             href="https://www.linkedin.com/in/david-cate-73363b84/"
@@ -36,9 +35,9 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.flexera.com/"
+            href="https://www.smartsheet.com/"
           >
-            Flexera
+            Smartsheet
           </a>
         </p>
         <p onClick={() => setResumeLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>

@@ -122,13 +122,13 @@ export const Resume = ({ setResumeLayout }) => {
       <Item variants={experience} animate={hide ? 'hidden' : 'visible'}>
         <h1>Experience</h1>
         <h3>Senior Software Engineer</h3>
-        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://flexera.com">Flexera</a></p>
+        <p className={'small'}><a rel="noopener noreferrer" style={{ color: "black" }} target="_blank" href="https://flexera.com">Flexera</a></p>
         <p className={'small'}>April 2019 - Feb 2023</p>
         <h3>Co-founder / Tech Architect</h3>
-        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://copyandpost.com">Copy and Post</a></p>
+        <p className={'small'}><a rel="noopener noreferrer" style={{ color: "black" }} target="_blank" href="https://copyandpost.com">Copy and Post</a></p>
         <p className={'small'}>March 2021 - March 2024</p>
         <h3>Senior Software Engineer</h3>
-        <p className={'small'}><a style={{ color: "black" }} target="_blank" href="https://smartsheet.com">Smartsheet</a></p>
+        <p className={'small'}><a rel="noopener noreferrer" style={{ color: "black" }} target="_blank" href="https://smartsheet.com">Smartsheet</a></p>
         <p className={'small'}>Feb 2023 - Present</p>
       </Item>
       <Item col={'left'} variants={references} animate={hide ? 'hidden' : 'visible'}>
@@ -154,6 +154,7 @@ export const Resume = ({ setResumeLayout }) => {
         <p className={'skill'}>Vercel</p>
         <p className={'skill'}>Accessibility</p>
         <p className={'skill'}>AI Integrations</p>
+        <p className={'skill'}>Internationalization</p>
       </Item>
     </ResumeContainer>
   )

@@ -38,7 +38,7 @@ const BaseRightCol = styled.div`
   background: url(${home2});
   background-size: cover;
   background-position: center;
-  width: 370px;
+  width: 1000px;
   height: 650px;
   margin-right: 1rem;
   border-radius: 1rem;

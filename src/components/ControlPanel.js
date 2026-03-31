@@ -438,12 +438,12 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate, show }) => 
       {show && vantaEffect && (
         <ControlPanelContainer
           id="control-panel-container"
-          initial={{ width: 0, opacity: 0, paddingLeft: 0, paddingRight: 0 }}
-          animate={{ width: 'auto', opacity: 1, paddingLeft: '3rem', paddingRight: '3rem' }}
-          exit={{ width: 0, opacity: 0, paddingLeft: 0, paddingRight: 0 }}
+          initial={{ x: '120%', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: '120%', opacity: 0 }}
           transition={{ 
-            duration: 0.3,
-            ease: [0.4, 0, 0.2, 1]
+            duration: 0.25,
+            ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
           <h3 id="control-panel-heading">{currentEffect} Controls</h3>

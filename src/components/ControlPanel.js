@@ -45,14 +45,22 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
     if (vantaEffect && vantaEffect.setOptions) {
       vantaEffect.setOptions({ [colorProp]: colorValue });
     }
-    // DOTS bakes color into materials at init — needs a full rebuild
-    // Topology never clears its canvas between frames, so old color trails
-    // persist forever — restart to get a clean slate with the new color
-    if ((currentEffect === 'DOTS' || currentEffect === 'Topology') && vantaEffect && vantaEffect.restart) {
+    if (onUpdate) {
+      onUpdate(colorProp, colorValue);
+    }
+  };
+
+  const makeColorHandler = (prop, needsRestart = false) => (color) => {
+    const hexValue = color.hex.replace('#', '');
+    const colorValue = Number(`0x${hexValue}`);
+    if (vantaEffect && vantaEffect.setOptions) {
+      vantaEffect.setOptions({ [prop]: colorValue });
+    }
+    if (needsRestart && vantaEffect && vantaEffect.restart) {
       vantaEffect.restart();
     }
     if (onUpdate) {
-      onUpdate(colorProp, colorValue);
+      onUpdate(prop, colorValue);
     }
   };
 
@@ -69,8 +77,21 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
     '#3b1f0a',  // Dark amber
   ];
 
-  // Effects that support color customization
-  const supportsColor = ['Waves', 'NET', 'Topology', 'DOTS', 'Birds'].includes(currentEffect);
+  const topologyLinesPalette = [
+    '#ffffff',  // White
+    '#00f5ff',  // Cyan
+    '#39ff14',  // Neon green
+    '#ff6b35',  // Vivid orange
+    '#ff2d78',  // Hot pink
+    '#ffe600',  // Electric yellow
+    '#a855f7',  // Bright violet
+    '#00bfff',  // Sky blue
+    '#ff4444',  // Bright red
+    '#7fff7f',  // Pale lime
+  ];
+
+  // Effects that support color customization via the bottom picker
+  const supportsColor = ['Waves', 'NET', 'Birds'].includes(currentEffect);
 
   const renderWavesControls = () => (
     <>
@@ -237,9 +258,26 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
 
   // Topology only exposes color + backgroundColor — no speed or other controls
   const renderTopologyControls = () => (
-    <ControlGroup>
-      <Label>Use the color picker below to customize the line color.</Label>
-    </ControlGroup>
+    <>
+      <ColorPickerWrapper>
+        <Label>Line Color</Label>
+        <CirclePicker
+          colors={topologyLinesPalette}
+          circleSize={28}
+          circleSpacing={10}
+          onChangeComplete={makeColorHandler('color', true)}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Background Color</Label>
+        <CirclePicker
+          colors={colorPalette}
+          circleSize={28}
+          circleSpacing={10}
+          onChangeComplete={makeColorHandler('backgroundColor', true)}
+        />
+      </ColorPickerWrapper>
+    </>
   );
 
   const renderBirdsControls = () => (
@@ -338,6 +376,33 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
           onChange={(e) => handleChange('spacing', e.target.value)}
         />
       </ControlGroup>
+      <ColorPickerWrapper>
+        <Label>Dot Color</Label>
+        <CirclePicker
+          colors={colorPalette}
+          circleSize={28}
+          circleSpacing={10}
+          onChangeComplete={makeColorHandler('color', true)}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Lines Color</Label>
+        <CirclePicker
+          colors={colorPalette}
+          circleSize={28}
+          circleSpacing={10}
+          onChangeComplete={makeColorHandler('color2', true)}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Background Color</Label>
+        <CirclePicker
+          colors={colorPalette}
+          circleSize={28}
+          circleSpacing={10}
+          onChangeComplete={makeColorHandler('backgroundColor', true)}
+        />
+      </ColorPickerWrapper>
     </>
   );
 

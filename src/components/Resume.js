@@ -119,7 +119,7 @@ export const Resume = ({ setResumeLayout }) => {
         <p>BS: Graphic Arts & Imaging Technology</p>
         <p>Minor: General Business</p>
       </Item>
-      <Item variants={experience} animate={hide ? 'hidden' : 'visible'}>
+      <Item variants={experience} animate={hide ? 'hidden' : 'visible'} initial="hidden">
         <h1>Experience</h1>
         <h3>Web Designer & Front End Developer</h3>
         <p className={'small'}>Appnet New Media Studio, Boone NC</p>
@@ -131,7 +131,7 @@ export const Resume = ({ setResumeLayout }) => {
         <p className={'small'}>Flexera, Asheville NC</p>
         <p className={'small'}>April 2019 - Present</p>
       </Item>
-      <Item col={'left'} variants={references} animate={hide ? 'hidden' : 'visible'}>
+      <Item col={'left'} variants={references} animate={hide ? 'hidden' : 'visible'} initial="hidden">
         <h1>References</h1>
         <h3>Mike Doble - Owner, Appnet</h3>
         <p className={'small'}>mike@appnet.com</p>
@@ -143,7 +143,7 @@ export const Resume = ({ setResumeLayout }) => {
         <p className={'small'}>jonas.goldstein@msj.com</p>
         <p className={'small'}>775.770.4450</p>
       </Item>
-      <Item variants={skills} animate={hide ? 'hidden' : 'visible'}>
+      <Item variants={skills} animate={hide ? 'hidden' : 'visible'} initial="hidden">
         <h1>Skills</h1>
         <p className={'skill'}>Front End Development</p>
         <p className={'skill'}>React // Redux</p>

@@ -28,12 +28,16 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate, show }) => 
   };
 
   const colorPalette = [
-    '#FF6B6B',  // Red
-    '#4ECDC4',  // Teal
-    '#45B7D1',  // Blue
-    '#FFA07A',  // Orange
-    '#98D8C8',  // Mint
-    '#C77DFF'   // Purple
+    '#1a1a2e',  // Deep navy
+    '#16213e',  // Midnight blue
+    '#0f3460',  // Dark ocean
+    '#1b4332',  // Forest
+    '#3d0000',  // Deep crimson
+    '#2d0057',  // Dark violet
+    '#0d2137',  // Deep steel
+    '#2c2c2c',  // Charcoal
+    '#1c3a2f',  // Dark emerald
+    '#3b1f0a',  // Dark amber
   ];
 
   // Effects that support color customization

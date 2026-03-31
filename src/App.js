@@ -158,11 +158,6 @@ const App = () => {
             resumeLayout={resumeLayout}
             ref={flexRef}
           >
-            <ControlPanel
-              show={showPanel}
-              currentEffect={vantaEffects[index - 1]?.name}
-              vantaEffect={vantaEffect}
-            />
             <RightCol vantaEffect={vantaEffects[index - 1]} />
             <LeftCol>
               <ButtonGroup>
@@ -191,6 +186,11 @@ const App = () => {
                 vantaEffect={vantaEffects[index - 1]}
               />
             </LeftCol>
+            <ControlPanel
+              show={showPanel}
+              currentEffect={vantaEffects[index - 1]?.name}
+              vantaEffect={vantaEffect}
+            />
           </FlexWrapper>
         )}
       </Vanta>

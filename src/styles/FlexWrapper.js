@@ -24,9 +24,8 @@ const getBorder = currentEffect => {
 export const FlexWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
-  align-items: ${props => props.resumeLayout ? 'none' : 'center'};
-  width: 100vw;
-  margin: 1rem;
+  align-items: flex-start;
+  padding: 2rem 1rem;
 
   @media (max-width: 710px) {
     flex-direction: column-reverse;

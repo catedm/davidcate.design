@@ -139,6 +139,8 @@ const App = () => {
     }
   };
 
+  const currentEffectConfig = vantaEffects[(index - 1 + vantaEffects.length) % vantaEffects.length];
+
   return (
     <>
       <Vanta ref={vantaRef}>
@@ -158,7 +160,7 @@ const App = () => {
             resumeLayout={resumeLayout}
             ref={flexRef}
           >
-            <RightCol vantaEffect={vantaEffects[index - 1]} />
+            <RightCol vantaEffect={currentEffectConfig} />
             <LeftCol>
               <ButtonGroup>
                 <ButtonContainer
@@ -167,14 +169,14 @@ const App = () => {
                   }}
                 >
                   <Button
-                    vantaEffect={vantaEffects[index - 1]}
+                    vantaEffect={currentEffectConfig}
                   />
                 </ButtonContainer>
                 <ButtonContainer
                   onClick={() => setShowPanel(prev => !prev)}
                 >
                   <Button
-                    vantaEffect={vantaEffects[index - 1]}
+                    vantaEffect={currentEffectConfig}
                     text={showPanel ? "CLOSE" : "CUSTOMIZE"}
                   />
                 </ButtonContainer>
@@ -183,12 +185,12 @@ const App = () => {
                 hideContent={hideContent}
                 setResumeLayout={setResumeLayout}
                 resumeLayout={resumeLayout}
-                vantaEffect={vantaEffects[index - 1]}
+                vantaEffect={currentEffectConfig}
               />
             </LeftCol>
             <ControlPanel
               show={showPanel}
-              currentEffect={vantaEffects[index - 1]?.name}
+              currentEffect={currentEffectConfig?.name}
               vantaEffect={vantaEffect}
             />
           </FlexWrapper>

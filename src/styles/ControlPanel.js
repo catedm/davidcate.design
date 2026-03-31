@@ -106,3 +106,25 @@ export const Slider = styled.input`
     border-radius: 3px;
   }
 `;
+
+export const ToggleRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+  }
+
+  input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #fff;
+  }
+`;

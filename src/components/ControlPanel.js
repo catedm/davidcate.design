@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ControlPanelContainer, ControlGroup, Slider, Label, ColorPickerWrapper, ToggleRow } from "../styles";
-import { CirclePicker } from "react-color";
+import { SliderPicker } from "react-color";
 
 export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
+  const [colorState, setColorState] = useState({});
+
   if (!currentEffect) return null;
 
   // Properties that require a full geometry rebuild via restart()
@@ -64,34 +66,23 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
     }
   };
 
-  const colorPalette = [
-    '#1a1a2e',  // Deep navy
-    '#16213e',  // Midnight blue
-    '#0f3460',  // Dark ocean
-    '#1b4332',  // Forest
-    '#3d0000',  // Deep crimson
-    '#2d0057',  // Dark violet
-    '#0d2137',  // Deep steel
-    '#2c2c2c',  // Charcoal
-    '#1c3a2f',  // Dark emerald
-    '#3b1f0a',  // Dark amber
-  ];
+  const colorNumToHex = (num) => {
+    if (num === undefined || num === null) return '#ffffff';
+    return '#' + num.toString(16).padStart(6, '0');
+  };
 
-  const topologyLinesPalette = [
-    '#ffffff',  // White
-    '#00f5ff',  // Cyan
-    '#39ff14',  // Neon green
-    '#ff6b35',  // Vivid orange
-    '#ff2d78',  // Hot pink
-    '#ffe600',  // Electric yellow
-    '#a855f7',  // Bright violet
-    '#00bfff',  // Sky blue
-    '#ff4444',  // Bright red
-    '#7fff7f',  // Pale lime
-  ];
+  const getColor = (prop) => {
+    return colorState[prop] !== undefined
+      ? colorState[prop]
+      : colorNumToHex(vantaEffect?.options?.[prop]);
+  };
+
+  const onColorLiveChange = (prop) => (color) => {
+    setColorState(prev => ({ ...prev, [prop]: color.hex }));
+  };
 
   // Effects that support color customization via the bottom picker
-  const supportsColor = ['Waves', 'NET', 'Birds'].includes(currentEffect);
+  const supportsColor = ['Waves', 'NET'].includes(currentEffect);
 
   const renderWavesControls = () => (
     <>
@@ -261,19 +252,17 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
     <>
       <ColorPickerWrapper>
         <Label>Line Color</Label>
-        <CirclePicker
-          colors={topologyLinesPalette}
-          circleSize={28}
-          circleSpacing={10}
+        <SliderPicker
+          color={getColor('color')}
+          onChange={onColorLiveChange('color')}
           onChangeComplete={makeColorHandler('color', true)}
         />
       </ColorPickerWrapper>
       <ColorPickerWrapper>
         <Label>Background Color</Label>
-        <CirclePicker
-          colors={colorPalette}
-          circleSize={28}
-          circleSpacing={10}
+        <SliderPicker
+          color={getColor('backgroundColor')}
+          onChange={onColorLiveChange('backgroundColor')}
           onChangeComplete={makeColorHandler('backgroundColor', true)}
         />
       </ColorPickerWrapper>
@@ -318,6 +307,30 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
           onChange={(e) => handleChange('speedLimit', e.target.value)}
         />
       </ControlGroup>
+      <ColorPickerWrapper>
+        <Label>Color 1</Label>
+        <SliderPicker
+          color={getColor('color1')}
+          onChange={onColorLiveChange('color1')}
+          onChangeComplete={makeColorHandler('color1', true)}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Color 2</Label>
+        <SliderPicker
+          color={getColor('color2')}
+          onChange={onColorLiveChange('color2')}
+          onChangeComplete={makeColorHandler('color2', true)}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Background Color</Label>
+        <SliderPicker
+          color={getColor('backgroundColor')}
+          onChange={onColorLiveChange('backgroundColor')}
+          onChangeComplete={makeColorHandler('backgroundColor')}
+        />
+      </ColorPickerWrapper>
     </>
   );
 
@@ -378,28 +391,25 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
       </ControlGroup>
       <ColorPickerWrapper>
         <Label>Dot Color</Label>
-        <CirclePicker
-          colors={colorPalette}
-          circleSize={28}
-          circleSpacing={10}
+        <SliderPicker
+          color={getColor('color')}
+          onChange={onColorLiveChange('color')}
           onChangeComplete={makeColorHandler('color', true)}
         />
       </ColorPickerWrapper>
       <ColorPickerWrapper>
         <Label>Lines Color</Label>
-        <CirclePicker
-          colors={colorPalette}
-          circleSize={28}
-          circleSpacing={10}
+        <SliderPicker
+          color={getColor('color2')}
+          onChange={onColorLiveChange('color2')}
           onChangeComplete={makeColorHandler('color2', true)}
         />
       </ColorPickerWrapper>
       <ColorPickerWrapper>
         <Label>Background Color</Label>
-        <CirclePicker
-          colors={colorPalette}
-          circleSize={28}
-          circleSpacing={10}
+        <SliderPicker
+          color={getColor('backgroundColor')}
+          onChange={onColorLiveChange('backgroundColor')}
           onChangeComplete={makeColorHandler('backgroundColor', true)}
         />
       </ColorPickerWrapper>
@@ -444,6 +454,38 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
           onChange={(e) => handleChange('zoom', e.target.value)}
         />
       </ControlGroup>
+      <ColorPickerWrapper>
+        <Label>Highlight Color</Label>
+        <SliderPicker
+          color={getColor('highlightColor')}
+          onChange={onColorLiveChange('highlightColor')}
+          onChangeComplete={makeColorHandler('highlightColor')}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Midtone Color</Label>
+        <SliderPicker
+          color={getColor('midtoneColor')}
+          onChange={onColorLiveChange('midtoneColor')}
+          onChangeComplete={makeColorHandler('midtoneColor')}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Lowlight Color</Label>
+        <SliderPicker
+          color={getColor('lowlightColor')}
+          onChange={onColorLiveChange('lowlightColor')}
+          onChangeComplete={makeColorHandler('lowlightColor')}
+        />
+      </ColorPickerWrapper>
+      <ColorPickerWrapper>
+        <Label>Base Color</Label>
+        <SliderPicker
+          color={getColor('baseColor')}
+          onChange={onColorLiveChange('baseColor')}
+          onChangeComplete={makeColorHandler('baseColor')}
+        />
+      </ColorPickerWrapper>
     </>
   );
 
@@ -513,12 +555,10 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
       {renderControls()}
       {supportsColor && (
         <ColorPickerWrapper id="color-picker-wrapper">
-          <Label id="color-picker-label">Color Palette</Label>
-          <CirclePicker
-            id="color-picker"
-            colors={colorPalette}
-            circleSize={32}
-            circleSpacing={12}
+          <Label id="color-picker-label">Color</Label>
+          <SliderPicker
+            color={getColor(currentEffect === 'Birds' ? 'color1' : 'color')}
+            onChange={onColorLiveChange(currentEffect === 'Birds' ? 'color1' : 'color')}
             onChangeComplete={handleColorChange}
           />
         </ColorPickerWrapper>

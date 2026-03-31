@@ -13,9 +13,11 @@ import {
   RightCol,
   LeftCol,
   ButtonContainer,
-  ButtonGroup
+  ButtonGroup,
+  ControlPanelWrapper
 } from "./styles";
 import { Card, Button, Resume, ControlPanel } from "./components";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
@@ -161,38 +163,49 @@ const App = () => {
             ref={flexRef}
           >
             <RightCol vantaEffect={currentEffectConfig} />
-            <LeftCol>
-              <ButtonGroup>
-                <ButtonContainer
-                  onClick={() => {
-                    changeEffect(vantaEffect);
-                  }}
-                >
-                  <Button
-                    vantaEffect={currentEffectConfig}
-                  />
-                </ButtonContainer>
-                <ButtonContainer
-                  onClick={() => setShowPanel(prev => !prev)}
-                >
-                  <Button
-                    vantaEffect={currentEffectConfig}
-                    text={showPanel ? "CLOSE" : "CUSTOMIZE"}
-                  />
-                </ButtonContainer>
-              </ButtonGroup>
-              <Card
-                hideContent={hideContent}
-                setResumeLayout={setResumeLayout}
-                resumeLayout={resumeLayout}
-                vantaEffect={currentEffectConfig}
-              />
-            </LeftCol>
-            <ControlPanel
-              show={showPanel}
-              currentEffect={currentEffectConfig?.name}
-              vantaEffect={vantaEffect}
-            />
+              <LeftCol>
+                <ButtonGroup>
+                  <ButtonContainer
+                    onClick={() => {
+                      changeEffect(vantaEffect);
+                    }}
+                  >
+                    <Button
+                      vantaEffect={currentEffectConfig}
+                    />
+                  </ButtonContainer>
+                  <ButtonContainer
+                    onClick={() => setShowPanel(prev => !prev)}
+                  >
+                    <Button
+                      vantaEffect={currentEffectConfig}
+                      text={showPanel ? "CLOSE" : "CUSTOMIZE"}
+                    />
+                  </ButtonContainer>
+                </ButtonGroup>
+                <Card
+                  hideContent={hideContent}
+                  setResumeLayout={setResumeLayout}
+                  resumeLayout={resumeLayout}
+                  vantaEffect={currentEffectConfig}
+                />
+              </LeftCol>
+              <ControlPanelWrapper
+                animate={{
+                  width: showPanel && currentEffectConfig ? 420 : 0,
+                  marginLeft: showPanel && currentEffectConfig ? '1rem' : 0,
+                }}
+                transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <AnimatePresence>
+                  {showPanel && vantaEffect && (
+                    <ControlPanel
+                      currentEffect={currentEffectConfig?.name}
+                      vantaEffect={vantaEffect}
+                    />
+                  )}
+                </AnimatePresence>
+              </ControlPanelWrapper>
           </FlexWrapper>
         )}
       </Vanta>

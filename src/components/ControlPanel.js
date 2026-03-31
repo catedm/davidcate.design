@@ -1,9 +1,8 @@
 import React from "react";
 import { ControlPanelContainer, ControlGroup, Slider, Label, ColorPickerWrapper, ToggleRow } from "../styles";
-import { AnimatePresence } from "framer-motion";
 import { CirclePicker } from "react-color";
 
-export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate, show }) => {
+export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
   if (!currentEffect) return null;
 
   // Properties that require a full geometry rebuild via restart()
@@ -434,34 +433,31 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate, show }) => 
   };
 
   return (
-    <AnimatePresence>
-      {show && vantaEffect && (
-        <ControlPanelContainer
-          id="control-panel-container"
-          initial={{ x: '120%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '120%', opacity: 0 }}
-          transition={{ 
-            duration: 0.25,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-        >
-          <h3 id="control-panel-heading">{currentEffect} Controls</h3>
-          {renderControls()}
-          {supportsColor && (
-            <ColorPickerWrapper id="color-picker-wrapper">
-              <Label id="color-picker-label">Color Palette</Label>
-              <CirclePicker
-                id="color-picker"
-                colors={colorPalette}
-                circleSize={32}
-                circleSpacing={12}
-                onChangeComplete={handleColorChange}
-              />
-            </ColorPickerWrapper>
-          )}
-        </ControlPanelContainer>
+    <ControlPanelContainer
+      layout
+      id="control-panel-container"
+      initial={{ x: '-120%', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: '-120%', opacity: 0 }}
+      transition={{ 
+        duration: 0.25,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+    >
+      <h3 id="control-panel-heading">{currentEffect} Controls</h3>
+      {renderControls()}
+      {supportsColor && (
+        <ColorPickerWrapper id="color-picker-wrapper">
+          <Label id="color-picker-label">Color Palette</Label>
+          <CirclePicker
+            id="color-picker"
+            colors={colorPalette}
+            circleSize={32}
+            circleSpacing={12}
+            onChangeComplete={handleColorChange}
+          />
+        </ColorPickerWrapper>
       )}
-    </AnimatePresence>
+    </ControlPanelContainer>
   );
 };

@@ -12,7 +12,7 @@ export const ControlPanelContainer = styled(motion.div)`
   backdrop-filter: blur(10px);
   flex-shrink: 0;
   align-self: flex-start;
-  margin-left: 1rem;
+  will-change: transform;
 
   h3 {
     margin: 0 0 1.5rem 0;

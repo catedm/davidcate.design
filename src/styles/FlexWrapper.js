@@ -32,7 +32,7 @@ export const FlexWrapper = styled(motion.div)`
   }
 `;
 
-const BaseRightCol = styled.div`
+const BaseRightCol = styled(motion.div)`
   border: 2px solid #fff;
   background: url(${home2});
   background-size: cover;
@@ -55,10 +55,16 @@ export const RightCol = styled(BaseRightCol)`
   border: ${props => props.vantaEffect && getBorder(props.vantaEffect.name)};
 `;
 
-export const LeftCol = styled.div`
+export const LeftCol = styled(motion.div)`
   @media (max-width: 710px) {
     width: 100%;
   }
+`;
+
+export const ControlPanelWrapper = styled(motion.div)`
+  overflow: hidden;
+  flex-shrink: 0;
+  align-self: flex-start;
 `;
 
 export const ContentWrapper = styled(motion.div)`

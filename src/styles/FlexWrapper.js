@@ -61,3 +61,30 @@ export const LeftCol = styled.div`
     width: 100%;
   }
 `;
+
+export const ContentWrapper = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  gap: 1rem;
+  
+  @media (max-width: 710px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+`;
+
+export const PanelWrapper = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 100vw;
+  
+  @media (max-width: 710px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+`;

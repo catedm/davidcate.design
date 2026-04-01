@@ -154,10 +154,7 @@ const App = () => {
         )}
         {resumeLayout && (
           <FlexWrapper resumeLayout={resumeLayout}>
-            <Resume
-              showContent={showContent}
-              setResumeLayout={setResumeLayout}
-            />
+            <Resume setResumeLayout={setResumeLayout} />
           </FlexWrapper>
         )}
         {!resumeLayout && !portfolioLayout && (

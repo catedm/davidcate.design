@@ -26,6 +26,7 @@ export const FlexWrapper = styled(motion.div)`
   justify-content: center;
   align-items: flex-start;
   padding: 2rem 1rem;
+  width: 100%;
 
   @media (max-width: 710px) {
     flex-direction: column-reverse;

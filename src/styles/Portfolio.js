@@ -23,11 +23,11 @@ export const PortfolioScrim = styled(motion.div)`
 export const PortfolioGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 160px;
+  grid-auto-rows: 200px;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1.5rem 2rem 2rem;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1600px;
   margin: 0 auto;
 
   @media (max-width: 710px) {

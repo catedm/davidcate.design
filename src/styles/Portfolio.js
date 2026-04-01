@@ -112,15 +112,19 @@ export const GridCellTitle = styled.h2`
 `;
 
 export const ExpandedCard = styled(motion.div)`
-  background: #111;
+  background-color: ${(p) => p.bg || "#111"};
+  background-image: ${(p) => (p.img ? `url(${p.img})` : "none")};
+  background-size: cover;
+  background-position: center;
   border-radius: 1.25rem;
-  width: 100%;
-  max-width: 680px;
   overflow: hidden;
-  z-index: 101;
   display: flex;
   flex-direction: column;
+  width: min(620px, 90vw);
+  height: min(700px, 85vh);
   color: #fff;
+  flex-shrink: 0;
+  will-change: transform;
 `;
 
 export const ExpandedHero = styled(motion.div)`

@@ -3,16 +3,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { portfolioItems } from "../data/portfolioItems";
 import {
   PortfolioGrid,
+  PortfolioScrim,
   GridCell,
   GridCellInner,
   GridCellGradient,
   GridCellSubtitle,
   GridCellTitle,
   ExpandedCard,
-  ExpandedHero,
   ExpandedHeroGradient,
-  ExpandedHeroText,
-  ExpandedBody,
   ExpandedDescription,
   TagRow,
   Tag,
@@ -26,16 +24,11 @@ const gridVariants = {
     opacity: 1,
     transition: { staggerChildren: 0.07, delayChildren: 0.1 },
   },
-  exit: {
-    opacity: 0,
-    transition: { staggerChildren: 0.04, staggerDirection: -1 },
-  },
 };
 
 const cellVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 22 } },
-  exit: { opacity: 0, y: -20, scale: 0.95, transition: { duration: 0.2 } },
 };
 
 const Portfolio = ({ onClose }) => {
@@ -67,74 +60,97 @@ const Portfolio = ({ onClose }) => {
         </button>
       </motion.div>
 
-      {/* Grid */}
-      <AnimatePresence>
-        {!selected && (
-          <PortfolioGrid
-            key="grid"
-            variants={gridVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+      {/* Grid — always mounted so layoutId tracks source rect */}
+      <PortfolioGrid
+        variants={gridVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {portfolioItems.map((item) => (
+          <GridCell
+            key={item.id}
+            layoutId={`card-${item.id}`}
+            bg={item.bg}
+            img={item.img}
+            variants={cellVariants}
+            onClick={() => !selected && setSelected(item)}
+            style={{
+              opacity: selected && selected.id !== item.id ? 0.3 : 1,
+              pointerEvents: selected ? "none" : "auto",
+              cursor: selected ? "default" : "pointer",
+            }}
+            whileHover={!selected ? { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } } : {}}
           >
-            {portfolioItems.map((item) => (
-              <GridCell
-                key={item.id}
-                layoutId={`card-${item.id}`}
-                bg={item.bg}
-                img={item.img}
-                variants={cellVariants}
-                onClick={() => setSelected(item)}
-                whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-              >
-                <GridCellGradient />
-                <GridCellInner>
-                  <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
-                  <GridCellTitle>{item.title}</GridCellTitle>
-                </GridCellInner>
-              </GridCell>
-            ))}
-          </PortfolioGrid>
-        )}
-      </AnimatePresence>
+            <GridCellGradient />
+            <GridCellInner>
+              <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
+              <GridCellTitle>{item.title}</GridCellTitle>
+            </GridCellInner>
+          </GridCell>
+        ))}
+      </PortfolioGrid>
 
-      {/* Expanded card — replaces grid in-place */}
+      {/* Expanded overlay — outer div centers, layoutId on inner card animates from grid cell */}
       <AnimatePresence>
         {selected && (
-          <motion.div
-            key="expanded"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{ display: "flex", justifyContent: "center", padding: "2rem" }}
-          >
-            <ExpandedCard
-              layoutId={`card-${selected.id}`}
-              transition={{ type: "spring", stiffness: 280, damping: 28 }}
+          <>
+            <PortfolioScrim
+              key="scrim"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelected(null)}
+            />
+            <div
+              key="overlay-container"
+              style={{
+                position: "fixed",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 101,
+                pointerEvents: "none",
+              }}
             >
-              <ExpandedHero bg={selected.bg} img={selected.img} style={{ position: "relative" }}>
+              <ExpandedCard
+                layoutId={`card-${selected.id}`}
+                bg={selected.bg}
+                img={selected.img}
+                transition={{ type: "spring", stiffness: 300, damping: 35 }}
+                style={{ pointerEvents: "auto" }}
+              >
                 <ExpandedHeroGradient />
-                <CloseButton onClick={() => setSelected(null)}>✕</CloseButton>
-                <ExpandedHeroText>
-                  <GridCellSubtitle>{selected.subtitle}</GridCellSubtitle>
-                  <GridCellTitle style={{ fontSize: "1.8rem" }}>{selected.title}</GridCellTitle>
-                </ExpandedHeroText>
-              </ExpandedHero>
-              <ExpandedBody>
-                <ExpandedDescription>{selected.description}</ExpandedDescription>
-                <TagRow>
-                  {selected.tags.map((t) => (
-                    <Tag key={t}>{t}</Tag>
-                  ))}
-                </TagRow>
-                {selected.url && (
-                  <ExpandedLink href={selected.url} target="_blank" rel="noopener noreferrer">
-                    View →
-                  </ExpandedLink>
-                )}
-              </ExpandedBody>
-            </ExpandedCard>
-          </motion.div>
+                <CloseButton
+                  onClick={() => setSelected(null)}
+                  style={{ position: "absolute", top: "1rem", right: "1rem" }}
+                >
+                  ✕
+                </CloseButton>
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.18, duration: 0.22 }}
+                  style={{ marginTop: "auto", padding: "2.5rem 2rem 2rem" }}
+                >
+                  <GridCellSubtitle style={{ fontSize: "0.85rem" }}>{selected.subtitle}</GridCellSubtitle>
+                  <GridCellTitle style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", marginBottom: "1rem" }}>{selected.title}</GridCellTitle>
+                  <ExpandedDescription>{selected.description}</ExpandedDescription>
+                  <TagRow style={{ marginTop: "1.25rem" }}>
+                    {selected.tags.map((t) => (
+                      <Tag key={t}>{t}</Tag>
+                    ))}
+                  </TagRow>
+                  {selected.url && (
+                    <ExpandedLink href={selected.url} target="_blank" rel="noopener noreferrer" style={{ marginTop: "1.25rem" }}>
+                      View →
+                    </ExpandedLink>
+                  )}
+                </motion.div>
+              </ExpandedCard>
+            </div>
+          </>
         )}
       </AnimatePresence>
     </div>

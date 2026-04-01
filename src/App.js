@@ -148,7 +148,7 @@ const App = () => {
     <>
       <Vanta ref={vantaRef}>
         {portfolioLayout && (
-          <FlexWrapper>
+          <FlexWrapper style={{ alignItems: "flex-start", alignSelf: "stretch" }}>
             <Portfolio onClose={() => setPortfolioLayout(false)} />
           </FlexWrapper>
         )}

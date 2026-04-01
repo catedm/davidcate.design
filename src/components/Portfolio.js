@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { portfolioItems } from "../data/portfolioItems";
+import { portfolioSections } from "../data/portfolioItems";
 import {
   PortfolioGrid,
   PortfolioScrim,
+  SectionTitle,
   GridCell,
   GridCellInner,
   GridCellGradient,
@@ -18,16 +19,24 @@ import {
   CloseButton,
 } from "../styles/Portfolio";
 
+const colSpanByType = {
+  featured: 6,
+  system: 4,
+  experimental: 4,
+  playground: 6,
+  algorithm: 6,
+};
+
 const gridVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.05 },
   },
 };
 
 const cellVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 28, scale: 0.96 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 22 } },
 };
 
@@ -35,7 +44,7 @@ const Portfolio = ({ onClose }) => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div style={{ width: "100%", position: "relative" }}>
+    <div style={{ width: "100%", position: "relative", paddingBottom: "3rem" }}>
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -60,37 +69,52 @@ const Portfolio = ({ onClose }) => {
         </button>
       </motion.div>
 
-      {/* Grid — always mounted so layoutId tracks source rect */}
-      <PortfolioGrid
-        variants={gridVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {portfolioItems.map((item) => (
-          <GridCell
-            key={item.id}
-            layoutId={`card-${item.id}`}
-            bg={item.bg}
-            img={item.img}
-            variants={cellVariants}
-            onClick={() => !selected && setSelected(item)}
-            style={{
-              opacity: selected && selected.id !== item.id ? 0.3 : 1,
-              pointerEvents: selected ? "none" : "auto",
-              cursor: selected ? "default" : "pointer",
-            }}
-            whileHover={!selected ? { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } } : {}}
+      {/* Sections — each has its own grid so nth-child resets and layoutId works */}
+      {portfolioSections.map((section, si) => (
+        <div key={section.name}>
+          <SectionTitle
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: si * 0.12 }}
           >
-            <GridCellGradient />
-            <GridCellInner>
-              <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
-              <GridCellTitle>{item.title}</GridCellTitle>
-            </GridCellInner>
-          </GridCell>
-        ))}
-      </PortfolioGrid>
+            {section.title}
+          </SectionTitle>
+          <PortfolioGrid
+            variants={gridVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {section.items.map((item) => (
+              <GridCell
+                key={item.id}
+                layoutId={`card-${item.id}`}
+                bg={item.bg}
+                colSpan={colSpanByType[item.type] || 6}
+                variants={cellVariants}
+                onClick={() => !selected && setSelected(item)}
+                style={{
+                  opacity: selected && selected.id !== item.id ? 0.25 : 1,
+                  pointerEvents: selected ? "none" : "auto",
+                  cursor: selected ? "default" : "pointer",
+                }}
+                whileHover={
+                  !selected
+                    ? { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }
+                    : {}
+                }
+              >
+                <GridCellGradient />
+                <GridCellInner>
+                  <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
+                  <GridCellTitle>{item.title}</GridCellTitle>
+                </GridCellInner>
+              </GridCell>
+            ))}
+          </PortfolioGrid>
+        </div>
+      ))}
 
-      {/* Expanded overlay — outer div centers, layoutId on inner card animates from grid cell */}
+      {/* Expanded overlay */}
       <AnimatePresence>
         {selected && (
           <>
@@ -116,7 +140,6 @@ const Portfolio = ({ onClose }) => {
               <ExpandedCard
                 layoutId={`card-${selected.id}`}
                 bg={selected.bg}
-                img={selected.img}
                 transition={{ type: "spring", stiffness: 300, damping: 35 }}
                 style={{ pointerEvents: "auto" }}
               >
@@ -135,7 +158,9 @@ const Portfolio = ({ onClose }) => {
                   style={{ marginTop: "auto", padding: "2.5rem 2rem 2rem" }}
                 >
                   <GridCellSubtitle style={{ fontSize: "0.85rem" }}>{selected.subtitle}</GridCellSubtitle>
-                  <GridCellTitle style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", marginBottom: "1rem" }}>{selected.title}</GridCellTitle>
+                  <GridCellTitle style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", marginBottom: "1rem" }}>
+                    {selected.title}
+                  </GridCellTitle>
                   <ExpandedDescription>{selected.description}</ExpandedDescription>
                   <TagRow style={{ marginTop: "1.25rem" }}>
                     {selected.tags.map((t) => (
@@ -143,7 +168,12 @@ const Portfolio = ({ onClose }) => {
                     ))}
                   </TagRow>
                   {selected.url && (
-                    <ExpandedLink href={selected.url} target="_blank" rel="noopener noreferrer" style={{ marginTop: "1.25rem" }}>
+                    <ExpandedLink
+                      href={selected.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginTop: "1.25rem" }}
+                    >
                       View →
                     </ExpandedLink>
                   )}

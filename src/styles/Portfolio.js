@@ -37,6 +37,17 @@ export const PortfolioGrid = styled(motion.div)`
   }
 `;
 
+export const SectionTitle = styled(motion.h2)`
+  color: #fff;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 2rem;
+  margin: 2rem 0 0.75rem;
+  opacity: 0.7;
+`;
+
 export const GridCell = styled(motion.div)`
   border-radius: 1rem;
   background-color: ${(p) => p.bg || "#222"};
@@ -52,30 +63,12 @@ export const GridCell = styled(motion.div)`
   padding: 1.25rem;
   color: #fff;
   will-change: transform;
-
-  /* staggered sizing */
-  &:nth-child(1) {
-    grid-column: span 7;
-    grid-row: span 2;
-  }
-  &:nth-child(2) {
-    grid-column: span 5;
-    grid-row: span 2;
-  }
-  &:nth-child(3) {
-    grid-column: span 5;
-    grid-row: span 2;
-  }
-  &:nth-child(4) {
-    grid-column: span 7;
-    grid-row: span 2;
-  }
+  grid-column: span ${(p) => p.colSpan || 6};
+  grid-row: span 2;
 
   @media (max-width: 710px) {
-    &:nth-child(n) {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
+    grid-column: span 12;
+    grid-row: span 1;
   }
 `;
 

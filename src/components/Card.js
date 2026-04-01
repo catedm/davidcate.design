@@ -1,8 +1,7 @@
 import React from "react";
 import { Card as CardFace, Icons } from "../styles";
-import { TiltWrapper } from "./TiltWrapper";
 
-const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
+const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
   return (
     <>
         <CardFace vantaEffect={vantaEffect}>
@@ -44,6 +43,9 @@ const Card = ({ vantaEffect, setResumeLayout, resumeLayout, hideContent }) => {
         </p>
         <p onClick={() => setResumeLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>
             RESUME
+        </p>
+        <p onClick={() => setPortfolioLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>
+            PORTFOLIO
         </p>
         </CardFace>
     </>

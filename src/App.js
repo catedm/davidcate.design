@@ -16,11 +16,12 @@ import {
   ButtonGroup,
   ControlPanelWrapper
 } from "./styles";
-import { Card, Button, Resume, ControlPanel, TiltWrapper } from "./components";
+import { Card, Button, Resume, ControlPanel, TiltWrapper, Portfolio } from "./components";
 import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
+  const [portfolioLayout, setPortfolioLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
   const [showPanel, setShowPanel] = useState(false);
@@ -146,6 +147,11 @@ const App = () => {
   return (
     <>
       <Vanta ref={vantaRef}>
+        {portfolioLayout && (
+          <AnimatePresence>
+            <Portfolio onClose={() => setPortfolioLayout(false)} />
+          </AnimatePresence>
+        )}
         {resumeLayout && (
           <FlexWrapper resumeLayout={resumeLayout}>
             <Resume
@@ -188,6 +194,7 @@ const App = () => {
                 <Card
                   hideContent={hideContent}
                   setResumeLayout={setResumeLayout}
+                  setPortfolioLayout={setPortfolioLayout}
                   resumeLayout={resumeLayout}
                   vantaEffect={currentEffectConfig}
                 />

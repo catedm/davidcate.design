@@ -16,7 +16,7 @@ import {
   ButtonGroup,
   ControlPanelWrapper
 } from "./styles";
-import { Card, Button, Resume, ControlPanel } from "./components";
+import { Card, Button, Resume, ControlPanel, TiltWrapper } from "./components";
 import { AnimatePresence } from "framer-motion";
 
 const App = () => {
@@ -162,7 +162,9 @@ const App = () => {
             resumeLayout={resumeLayout}
             ref={flexRef}
           >
-            <RightCol vantaEffect={currentEffectConfig} />
+            <TiltWrapper style={{ borderRadius: "1rem", marginRight: "1rem" }}>
+              <RightCol vantaEffect={currentEffectConfig} style={{ margin: 0 }} />
+            </TiltWrapper>
               <LeftCol>
                 <ButtonGroup>
                   <ButtonContainer

@@ -3,8 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { portfolioItems } from "../data/portfolioItems";
 import {
   PortfolioGrid,
-  PortfolioOverlay,
-  PortfolioScrim,
   GridCell,
   GridCellInner,
   GridCellGradient,
@@ -44,7 +42,31 @@ const Portfolio = ({ onClose }) => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <>
+    <div style={{ width: "100%", position: "relative" }}>
+      {/* Back button */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        style={{ padding: "1rem 2rem 0" }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            background: "rgba(255,255,255,0.12)",
+            border: "1px solid rgba(255,255,255,0.25)",
+            color: "#fff",
+            borderRadius: "999px",
+            padding: "0.4rem 1rem",
+            cursor: "pointer",
+            fontSize: "0.9rem",
+            fontWeight: 600,
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          ← Back
+        </button>
+      </motion.div>
+
       {/* Grid */}
       <AnimatePresence>
         {!selected && (
@@ -76,74 +98,46 @@ const Portfolio = ({ onClose }) => {
         )}
       </AnimatePresence>
 
-      {/* Expanded overlay */}
+      {/* Expanded card — replaces grid in-place */}
       <AnimatePresence>
         {selected && (
-          <>
-            <PortfolioScrim
-              key="scrim"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelected(null)}
-            />
-            <PortfolioOverlay key="overlay">
-              <ExpandedCard
-                layoutId={`card-${selected.id}`}
-                transition={{ type: "spring", stiffness: 280, damping: 28 }}
-              >
-                <ExpandedHero bg={selected.bg} img={selected.img} style={{ position: "relative" }}>
-                  <ExpandedHeroGradient />
-                  <CloseButton onClick={() => setSelected(null)}>✕</CloseButton>
-                  <ExpandedHeroText>
-                    <GridCellSubtitle>{selected.subtitle}</GridCellSubtitle>
-                    <GridCellTitle style={{ fontSize: "1.8rem" }}>{selected.title}</GridCellTitle>
-                  </ExpandedHeroText>
-                </ExpandedHero>
-                <ExpandedBody>
-                  <ExpandedDescription>{selected.description}</ExpandedDescription>
-                  <TagRow>
-                    {selected.tags.map((t) => (
-                      <Tag key={t}>{t}</Tag>
-                    ))}
-                  </TagRow>
-                  {selected.url && (
-                    <ExpandedLink href={selected.url} target="_blank" rel="noopener noreferrer">
-                      View →
-                    </ExpandedLink>
-                  )}
-                </ExpandedBody>
-              </ExpandedCard>
-            </PortfolioOverlay>
-          </>
+          <motion.div
+            key="expanded"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ display: "flex", justifyContent: "center", padding: "2rem" }}
+          >
+            <ExpandedCard
+              layoutId={`card-${selected.id}`}
+              transition={{ type: "spring", stiffness: 280, damping: 28 }}
+            >
+              <ExpandedHero bg={selected.bg} img={selected.img} style={{ position: "relative" }}>
+                <ExpandedHeroGradient />
+                <CloseButton onClick={() => setSelected(null)}>✕</CloseButton>
+                <ExpandedHeroText>
+                  <GridCellSubtitle>{selected.subtitle}</GridCellSubtitle>
+                  <GridCellTitle style={{ fontSize: "1.8rem" }}>{selected.title}</GridCellTitle>
+                </ExpandedHeroText>
+              </ExpandedHero>
+              <ExpandedBody>
+                <ExpandedDescription>{selected.description}</ExpandedDescription>
+                <TagRow>
+                  {selected.tags.map((t) => (
+                    <Tag key={t}>{t}</Tag>
+                  ))}
+                </TagRow>
+                {selected.url && (
+                  <ExpandedLink href={selected.url} target="_blank" rel="noopener noreferrer">
+                    View →
+                  </ExpandedLink>
+                )}
+              </ExpandedBody>
+            </ExpandedCard>
+          </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Back link */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        style={{ position: "absolute", top: "1.5rem", left: "1.5rem", zIndex: 102 }}
-      >
-        <button
-          onClick={onClose}
-          style={{
-            background: "rgba(255,255,255,0.12)",
-            border: "1px solid rgba(255,255,255,0.25)",
-            color: "#fff",
-            borderRadius: "999px",
-            padding: "0.4rem 1rem",
-            cursor: "pointer",
-            fontSize: "0.9rem",
-            fontWeight: 600,
-            backdropFilter: "blur(6px)",
-          }}
-        >
-          ← Back
-        </button>
-      </motion.div>
-    </>
+    </div>
   );
 };
 

@@ -148,9 +148,9 @@ const App = () => {
     <>
       <Vanta ref={vantaRef}>
         {portfolioLayout && (
-          <AnimatePresence>
+          <FlexWrapper>
             <Portfolio onClose={() => setPortfolioLayout(false)} />
-          </AnimatePresence>
+          </FlexWrapper>
         )}
         {resumeLayout && (
           <FlexWrapper resumeLayout={resumeLayout}>
@@ -160,7 +160,7 @@ const App = () => {
             />
           </FlexWrapper>
         )}
-        {!resumeLayout && (
+        {!resumeLayout && !portfolioLayout && (
           <FlexWrapper
             variants={wrapper}
             initial="hidden"

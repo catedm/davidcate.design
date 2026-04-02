@@ -89,6 +89,7 @@ const Portfolio = ({ onClose }) => {
                 key={item.id}
                 layoutId={`card-${item.id}`}
                 bg={item.bg}
+                img={item.image}
                 colSpan={colSpanByType[item.type] || 6}
                 variants={cellVariants}
                 onClick={() => !selected && setSelected(item)}
@@ -140,6 +141,7 @@ const Portfolio = ({ onClose }) => {
               <ExpandedCard
                 layoutId={`card-${selected.id}`}
                 bg={selected.bg}
+                img={selected.image}
                 transition={{ type: "spring", stiffness: 300, damping: 35 }}
                 style={{ pointerEvents: "auto" }}
               >

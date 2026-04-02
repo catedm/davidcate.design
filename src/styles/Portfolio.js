@@ -100,8 +100,15 @@ export const GridCellSubtitle = styled.p`
 export const GridCellTitle = styled.h2`
   font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 700;
+  font-style: normal;
   margin: 0;
   line-height: 1.15;
+  color: #fff;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 1),
+    0 1px 4px rgba(0, 0, 0, 1),
+    0 2px 12px rgba(0, 0, 0, 0.95),
+    0 4px 24px rgba(0, 0, 0, 0.9);
 `;
 
 export const ExpandedCard = styled(motion.div)`
@@ -133,7 +140,15 @@ export const ExpandedHero = styled(motion.div)`
 export const ExpandedHeroGradient = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.97) 0%,
+    rgba(0, 0, 0, 0.93) 40%,
+    rgba(0, 0, 0, 0.85) 55%,
+    rgba(0, 0, 0, 0.65) 70%,
+    rgba(0, 0, 0, 0.2) 88%,
+    transparent 100%
+  );
 `;
 
 export const ExpandedHeroText = styled.div`

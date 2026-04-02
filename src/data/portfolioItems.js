@@ -12,6 +12,7 @@ export const portfolioSections = [
           "Design and delivery of a real-time scenario planning system enabling enterprise teams to model capacity, allocation, and timelines across complex datasets. Built cross-repo frontend architecture and coordinated with backend reporting systems to unlock flexible, interactive planning workflows.",
         tags: ["React", "TypeScript", "System Design", "Data Visualization", "Frontend Architecture", "Cross-Team Collaboration"],
         bg: "#0c1b33",
+        image: require("../assets/rmsp-scenario.webp"),
       },
       {
         id: "capacity-view",

@@ -4,7 +4,6 @@ import { portfolioSections } from "../data/portfolioItems";
 import {
   PortfolioGrid,
   PortfolioScrim,
-  SectionTitle,
   GridCell,
   GridCellInner,
   GridCellGradient,
@@ -19,13 +18,7 @@ import {
   CloseButton,
 } from "../styles/Portfolio";
 
-const colSpanByType = {
-  featured: 6,
-  system: 4,
-  experimental: 4,
-  playground: 6,
-  algorithm: 6,
-};
+const allItems = portfolioSections.flatMap((s) => s.items);
 
 const gridVariants = {
   hidden: { opacity: 0 },
@@ -69,51 +62,39 @@ const Portfolio = ({ onClose }) => {
         </button>
       </motion.div>
 
-      {/* Sections — each has its own grid so nth-child resets and layoutId works */}
-      {portfolioSections.map((section, si) => (
-        <div key={section.name}>
-          <SectionTitle
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: si * 0.12 }}
+      <PortfolioGrid
+        variants={gridVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {allItems.map((item) => (
+          <GridCell
+            key={item.id}
+            layoutId={`card-${item.id}`}
+            bg={item.bg}
+            img={item.image}
+            colSpan={item.colSpan || 6}
+            variants={cellVariants}
+            onClick={() => !selected && setSelected(item)}
+            style={{
+              opacity: selected && selected.id !== item.id ? 0.25 : 1,
+              pointerEvents: selected ? "none" : "auto",
+              cursor: selected ? "default" : "pointer",
+            }}
+            whileHover={
+              !selected
+                ? { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }
+                : {}
+            }
           >
-            {section.title}
-          </SectionTitle>
-          <PortfolioGrid
-            variants={gridVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {section.items.map((item) => (
-              <GridCell
-                key={item.id}
-                layoutId={`card-${item.id}`}
-                bg={item.bg}
-                img={item.image}
-                colSpan={colSpanByType[item.type] || 6}
-                variants={cellVariants}
-                onClick={() => !selected && setSelected(item)}
-                style={{
-                  opacity: selected && selected.id !== item.id ? 0.25 : 1,
-                  pointerEvents: selected ? "none" : "auto",
-                  cursor: selected ? "default" : "pointer",
-                }}
-                whileHover={
-                  !selected
-                    ? { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }
-                    : {}
-                }
-              >
-                <GridCellGradient />
-                <GridCellInner>
-                  <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
-                  <GridCellTitle>{item.title}</GridCellTitle>
-                </GridCellInner>
-              </GridCell>
-            ))}
-          </PortfolioGrid>
-        </div>
-      ))}
+            <GridCellGradient />
+            <GridCellInner>
+              <GridCellSubtitle>{item.subtitle}</GridCellSubtitle>
+              <GridCellTitle>{item.title}</GridCellTitle>
+            </GridCellInner>
+          </GridCell>
+        ))}
+      </PortfolioGrid>
 
       {/* Expanded overlay */}
       <AnimatePresence>

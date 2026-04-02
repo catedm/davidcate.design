@@ -13,6 +13,7 @@ export const portfolioSections = [
         tags: ["React", "TypeScript", "System Design", "Data Visualization", "Frontend Architecture", "Cross-Team Collaboration"],
         bg: "#0c1b33",
         image: require("../assets/rmsp-scenario.webp"),
+        colSpan: 7,
       },
       {
         id: "capacity-view",
@@ -23,6 +24,8 @@ export const portfolioSections = [
           "Developed a high-performance data interface for analyzing resource allocation across projects, roles, and disciplines. Implemented advanced filtering and drill-down capabilities while optimizing rendering for large, data-heavy views.",
         tags: ["React", "Performance Optimization", "Large Data Rendering", "Derived State", "UI Architecture", "Data Modeling"],
         bg: "#0d2b1d",
+        image: require("../assets/cv.webp"),
+        colSpan: 5,
       },
       {
         id: "copy-and-post",
@@ -33,6 +36,8 @@ export const portfolioSections = [
           "Built a full-stack content generation and scheduling platform supporting automated publishing across multiple social channels. Designed a serverless scheduling system to reliably process and distribute high volumes of scheduled content.",
         tags: ["React", "GraphQL", "AWS Lambda", "Aurora (RDS)", "Serverless Architecture", "System Design"],
         bg: "#1e0533",
+        image: require("../assets/copypost.png"),
+        colSpan: 5,
       },
       {
         id: "auth-system",
@@ -43,6 +48,7 @@ export const portfolioSections = [
           "Rebuilt the login experience with a focus on scalability, security, and maintainability. Established reusable UI patterns and improved developer workflows while aligning closely with backend authentication systems.",
         tags: ["React", "TypeScript", "Frontend Architecture", "Security", "UX Systems", "Design Systems"],
         bg: "#2d0a0a",
+        colSpan: 7,
       },
     ],
   },
@@ -59,6 +65,7 @@ export const portfolioSections = [
           "Integrated a legacy enterprise application into a modern React platform under tight delivery timelines. Pivoted from a failing approach to a seamless embedded solution, accelerating delivery while maintaining a cohesive user experience.",
         tags: ["React", "System Integration", "Architecture Decisions", "Problem Solving", "Legacy Systems", "Delivery Execution"],
         bg: "#0a1f2e",
+        colSpan: 4,
       },
       {
         id: "localization",
@@ -69,6 +76,7 @@ export const portfolioSections = [
           "Led the effort to scale a legacy product for global use by building a custom string extraction and localization pipeline. Unified multiple frontend systems into a consistent localization workflow.",
         tags: ["Localization", "Build Systems", "Automation", "Legacy Codebases", "Tooling", "System Design"],
         bg: "#0f2b1e",
+        colSpan: 4,
       },
       {
         id: "ai-research",
@@ -79,6 +87,7 @@ export const portfolioSections = [
           "Explored AI-driven approaches to scenario generation by evaluating LLM-based and deterministic models. Documented tradeoffs and informed long-term architectural direction for intelligent planning features.",
         tags: ["AI", "LLMs", "Research", "Prototyping", "System Design", "Product Strategy"],
         bg: "#2a1800",
+        colSpan: 4,
       },
     ],
   },
@@ -95,6 +104,7 @@ export const portfolioSections = [
           "Built a trading-style interface that streams and renders live buy/sell data with dynamic updates. Focused on performance using memoization and efficient state management.",
         tags: ["React", "Real-Time Data", "Performance Optimization", "WebSockets", "Memoization", "Financial UI"],
         bg: "#0f1b33",
+        colSpan: 8,
       },
       {
         id: "throttle",
@@ -105,6 +115,7 @@ export const portfolioSections = [
           "Implemented a throttle utility from scratch to manage high-frequency events and improve performance in real-time applications.",
         tags: ["JavaScript", "Performance", "Algorithms", "Event Handling"],
         bg: "#1c1c1c",
+        colSpan: 4,
       },
     ],
   },

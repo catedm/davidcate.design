@@ -36,9 +36,9 @@ const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.flexera.com/"
+            href="https://www.smartsheet.com/"
           >
-            Flexera
+            Smartsheet
           </a>
         </p>
         <p onClick={() => setResumeLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>

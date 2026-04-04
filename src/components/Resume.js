@@ -1,6 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ResumeContainer, Item } from "../styles";
+import {
+  ResumeGrid,
+  ResumeCard,
+  CardEyebrow,
+  EduSchool,
+  EduDegree,
+  EduMinor,
+  Timeline,
+  TimelineEntry,
+  DateRange,
+  RoleBlock,
+  RoleTitle,
+  RoleCompany,
+  RoleBullets,
+  SkillsGrid,
+  SkillGroup,
+  SkillGroupLabel,
+  SkillTags,
+  SkillTag,
+} from "../styles";
 
 const container = {
   hidden: { opacity: 0 },
@@ -19,6 +38,78 @@ const itemVariant = {
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 22 } },
   exit: { opacity: 0, y: -16, transition: { duration: 0.15 } },
 };
+
+const experience = [
+  {
+    dateRange: "Feb 2023\n— present",
+    title: "Senior Software Engineer",
+    company: "Smartsheet",
+    location: "Bellevue, WA",
+    current: true,
+    bullets: [
+      "Led frontend development for Scenario Planning — forecasting, timeline visualization, and decision-making at enterprise scale",
+      "Built advanced filtering and drill-down for Capacity View, enabling allocation analysis across roles, disciplines, and custom fields",
+      "Embedded on OAuth identity team to deliver a scalable, secure login system with reusable auth UI patterns and IDP integrations",
+      "Led AI scenario generation research, evaluating LLM-based and deterministic approaches and documenting architectural tradeoffs",
+    ],
+  },
+  {
+    dateRange: "Mar 2021\n— Jan 2024",
+    title: "Technical Co-Founder",
+    company: "Copy and Post",
+    location: "Asheville, NC",
+    current: false,
+    bullets: [
+      "Built a full-stack social content platform end-to-end with React, TypeScript, and GraphQL",
+      "Designed a serverless scheduling system (AWS Lambda + Aurora) publishing hundreds of posts per week across major platforms",
+    ],
+  },
+  {
+    dateRange: "Apr 2019\n— Feb 2023",
+    title: "Senior Software Engineer",
+    company: "Flexera",
+    location: "Itasca, IL",
+    current: false,
+    bullets: [
+      "Integrated legacy flagship product into Flexera One under tight timelines, maintaining cohesive cross-product UX",
+      "Built and documented internal component library consumed across multiple product lines",
+      "Wired frontend auth flows to Azure AD and Okta; validated token handling and session workflows with E2E tests",
+    ],
+  },
+  {
+    dateRange: "Jan 2016\n— Apr 2019",
+    title: "Internet Marketing Programmer",
+    company: "Element-360",
+    location: "Asheville, NC",
+    current: false,
+    bullets: [
+      "Built and maintained production web experiences; delivered performant, conversion-focused solutions",
+    ],
+  },
+];
+
+const skills = [
+  {
+    label: "Core languages & frameworks",
+    accent: "purple",
+    tags: ["React", "TypeScript", "JavaScript", "Next.js", "GraphQL", "Redux", "React Native"],
+  },
+  {
+    label: "Architecture & systems",
+    accent: "teal",
+    tags: ["Frontend Architecture", "Scalable UI Systems", "Component Library Design", "Real-Time Data Flows", "Serverless Architecture", "API Integration", "Data Visualization"],
+  },
+  {
+    label: "Auth & security",
+    accent: "amber",
+    tags: ["OAuth 2.0", "Azure AD", "Okta", "Identity Provider Integration", "Session Management", "Secure Login Systems"],
+  },
+  {
+    label: "Cloud, testing & tooling",
+    accent: "neutral",
+    tags: ["AWS Lambda", "Aurora/RDS", "S3", "Vercel", "Playwright", "Jest", "Storybook", "Git"],
+  },
+];
 
 export const Resume = ({ setResumeLayout }) => {
   return (
@@ -45,49 +136,56 @@ export const Resume = ({ setResumeLayout }) => {
           ← Back
         </button>
       </motion.div>
-      <ResumeContainer variants={container} initial="hidden" animate="visible" exit="exit">
-        <Item col="left" variants={itemVariant}>
-          <h1>Education</h1>
-          <h2>Appalachian State University</h2>
-          <p>BS: Graphic Arts &amp; Imaging Technology</p>
-          <p>Minor: General Business</p>
-        </Item>
-        <Item variants={itemVariant}>
-          <h1>Experience</h1>
-          <h3>Web Designer &amp; Front End Developer</h3>
-          <p className="small">Appnet New Media Studio, Boone NC</p>
-          <p className="small">May 2015 - April 2016</p>
-          <h3>Internet Marketing Programmer</h3>
-          <p className="small">Element-360, Asheville NC</p>
-          <p className="small">April 2016 – April 2019</p>
-          <h3>Software Development Engineer</h3>
-          <p className="small">Flexera, Asheville NC</p>
-          <p className="small">April 2019 - Present</p>
-        </Item>
-        <Item col="left" variants={itemVariant}>
-          <h1>References</h1>
-          <h3>Mike Doble - Owner, Appnet</h3>
-          <p className="small">mike@appnet.com</p>
-          <p className="small">888.926.4584</p>
-          <h3>Chad Martin - Owner, Element-360</h3>
-          <p className="small">chad@element-360.com</p>
-          <p className="small">775.770.4450</p>
-          <h3>Dr. Jonas Goldstein - Interventional Radiologist</h3>
-          <p className="small">jonas.goldstein@msj.com</p>
-          <p className="small">775.770.4450</p>
-        </Item>
-        <Item variants={itemVariant}>
-          <h1>Skills</h1>
-          <p className="skill">Front End Development</p>
-          <p className="skill">React // Redux</p>
-          <p className="skill">Javascript // Typescript</p>
-          <p className="skill">HTML &amp; CSS</p>
-          <p className="skill">Styled Components</p>
-          <p className="skill">Jest // Enzyme // Cypress</p>
-          <p className="skill">GIT // Travis-CI</p>
-          <p className="skill">AWS</p>
-        </Item>
-      </ResumeContainer>
+      <ResumeGrid variants={container} initial="hidden" animate="visible" exit="exit">
+        {/* Education */}
+        <ResumeCard variants={itemVariant} area="edu">
+          <CardEyebrow>Education</CardEyebrow>
+          <EduSchool>Appalachian State University</EduSchool>
+          <EduDegree>BS, Graphic Arts &amp; Imaging Technology</EduDegree>
+          <EduMinor>Minor: General Business</EduMinor>
+        </ResumeCard>
+
+        {/* Experience */}
+        <ResumeCard variants={itemVariant} area="exp">
+          <CardEyebrow>Experience</CardEyebrow>
+          <Timeline>
+            {experience.map((role, i) => (
+              <TimelineEntry key={i}>
+                <DateRange>{role.dateRange}</DateRange>
+                <RoleBlock>
+                  <RoleTitle>
+                    {role.current && <span className="dot" />}
+                    {role.title}
+                  </RoleTitle>
+                  <RoleCompany>{role.company} · {role.location}</RoleCompany>
+                  <RoleBullets>
+                    {role.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </RoleBullets>
+                </RoleBlock>
+              </TimelineEntry>
+            ))}
+          </Timeline>
+        </ResumeCard>
+
+        {/* Skills */}
+        <ResumeCard variants={itemVariant} area="skills">
+          <CardEyebrow>Skills</CardEyebrow>
+          <SkillsGrid>
+            {skills.map((group, i) => (
+              <SkillGroup key={i}>
+                <SkillGroupLabel>{group.label}</SkillGroupLabel>
+                <SkillTags>
+                  {group.tags.map((tag, j) => (
+                    <SkillTag key={j} accent={group.accent}>{tag}</SkillTag>
+                  ))}
+                </SkillTags>
+              </SkillGroup>
+            ))}
+          </SkillsGrid>
+        </ResumeCard>
+      </ResumeGrid>
     </div>
   );
 };

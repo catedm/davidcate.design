@@ -1,13 +1,14 @@
 import React from "react";
-import { Card as CardFace, Icons } from "../styles";
+import { Card as CardFace, Icons, Button, ButtonGroup } from "../styles";
 
 const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
   return (
     <>
         <CardFace vantaEffect={vantaEffect}>
         <h1>David Cate</h1>
-        <h2>Front End Developer</h2>
-        <p>React // Typescript</p>
+        <h2>Senior Frontend Engineer </h2>
+        <p>10 years building enterprise-scale interfaces — <br />
+data-heavy systems, auth platforms, and design systems.</p>
         <Icons vantaEffect={vantaEffect}>
           <a
             href="https://www.linkedin.com/in/david-cate-73363b84/"
@@ -23,13 +24,13 @@ const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
           >
             <i className={"fab fa-github"} />
           </a>
-          <a
+          {/* <a
             href="https://levelup.gitconnected.com/@david_cate"
             target="_blank"
             rel="noopener noreferrer"
           >
             <i className={"fab fa-medium"} />
-          </a>
+          </a> */}
         </Icons>
         <p>
           Current Employer:{" "}
@@ -41,12 +42,14 @@ const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
             Smartsheet
           </a>
         </p>
-        <p onClick={() => setResumeLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>
-            RESUME
-        </p>
-        <p onClick={() => setPortfolioLayout(true)} style={{ fontWeight: 'bold', fontStyle: 'italic', fontSize: '2rem', cursor: 'pointer' }}>
-            PORTFOLIO
-        </p>
+        <ButtonGroup>
+          <Button vantaEffect={vantaEffect} onClick={() => setResumeLayout(true)}>
+            <span>Resume</span>
+          </Button>
+          <Button vantaEffect={vantaEffect} onClick={() => setPortfolioLayout(true)}>
+            <span>Portfolio</span>
+          </Button>
+        </ButtonGroup>
         </CardFace>
     </>
   );

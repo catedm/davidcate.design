@@ -31,7 +31,7 @@ export const portfolioSections = [
         id: "copy-and-post",
         title: "Social Content Platform",
         type: "featured",
-        subtitle: "Full-stack system for automated content publishing",
+        subtitle: "Co founded a full-stack system for automated content publishing",
         description:
           "Built a full-stack content generation and scheduling platform supporting automated publishing across multiple social channels. Designed a serverless scheduling system to reliably process and distribute high volumes of scheduled content.",
         tags: ["React", "GraphQL", "AWS Lambda", "Aurora (RDS)", "Serverless Architecture", "System Design"],
@@ -45,10 +45,11 @@ export const portfolioSections = [
         type: "featured",
         subtitle: "Scalable and secure login experience",
         description:
-          "Rebuilt the login experience with a focus on scalability, security, and maintainability. Established reusable UI patterns and improved developer workflows while aligning closely with backend authentication systems.",
+          "Rebuilt the Smartsheet login experience with a focus on scalability, security, and maintainability. Established reusable UI patterns and improved developer workflows while aligning closely with backend authentication systems.",
         tags: ["React", "TypeScript", "Frontend Architecture", "Security", "UX Systems", "Design Systems"],
         bg: "#2d0a0a",
         colSpan: 7,
+        image: require("../assets/login.png"),
       },
     ],
   },
@@ -66,6 +67,7 @@ export const portfolioSections = [
         tags: ["React", "System Integration", "Architecture Decisions", "Problem Solving", "Legacy Systems", "Delivery Execution"],
         bg: "#0a1f2e",
         colSpan: 4,
+        image: require("../assets/flexera.avif"),
       },
       {
         id: "localization",
@@ -77,6 +79,7 @@ export const portfolioSections = [
         tags: ["Localization", "Build Systems", "Automation", "Legacy Codebases", "Tooling", "System Design"],
         bg: "#0f2b1e",
         colSpan: 4,
+        image: require("../assets/loc.png"),
       },
       {
         id: "ai-research",
@@ -88,35 +91,46 @@ export const portfolioSections = [
         tags: ["AI", "LLMs", "Research", "Prototyping", "System Design", "Product Strategy"],
         bg: "#2a1800",
         colSpan: 4,
+        image: require("../assets/ai.webp"),
       },
+      {
+        "id": "component-library",
+        "title": "Component Library & Design System",
+        "type": "system",
+        "subtitle": "Reusable UI system built from spec to docs",
+        "description": "Designed and built reusable UI components from UX specifications for Flexera's internal component library, consumed across multiple product lines. Went beyond implementation to rebuild the developer documentation from scratch — improving discoverability, usage consistency, and adoption across teams. Treated the library as a product: spec-driven component design, thorough API documentation, and a developer experience layer that made the right patterns the easy ones to reach for.",
+        "tags": ["React", "TypeScript", "Design Systems", "Storybook", "Component Architecture", "Developer Experience", "Documentation", "UX Specs"],
+        "bg": "#1b1b2e",
+        image: require("../assets/flexera-comp-lib.png"),
+      }
     ],
   },
   {
     name: "playground",
     title: "Engineering Playground",
     items: [
-      {
-        id: "order-book",
-        title: "Real-Time Order Book Simulation",
-        type: "playground",
-        subtitle: "High-frequency UI with streaming updates",
-        description:
-          "Built a trading-style interface that streams and renders live buy/sell data with dynamic updates. Focused on performance using memoization and efficient state management.",
-        tags: ["React", "Real-Time Data", "Performance Optimization", "WebSockets", "Memoization", "Financial UI"],
-        bg: "#0f1b33",
-        colSpan: 8,
-      },
-      {
-        id: "throttle",
-        title: "Throttle Utility Implementation",
-        type: "algorithm",
-        subtitle: "Controlling execution frequency in UI systems",
-        description:
-          "Implemented a throttle utility from scratch to manage high-frequency events and improve performance in real-time applications.",
-        tags: ["JavaScript", "Performance", "Algorithms", "Event Handling"],
-        bg: "#1c1c1c",
-        colSpan: 4,
-      },
+      // {
+      //   id: "order-book",
+      //   title: "Real-Time Order Book Simulation",
+      //   type: "playground",
+      //   subtitle: "High-frequency UI with streaming updates",
+      //   description:
+      //     "Built a trading-style interface that streams and renders live buy/sell data with dynamic updates. Focused on performance using memoization and efficient state management.",
+      //   tags: ["React", "Real-Time Data", "Performance Optimization", "WebSockets", "Memoization", "Financial UI"],
+      //   bg: "#0f1b33",
+      //   colSpan: 8,
+      // },
+      // {
+      //   id: "throttle",
+      //   title: "Throttle Utility Implementation",
+      //   type: "algorithm",
+      //   subtitle: "Controlling execution frequency in UI systems",
+      //   description:
+      //     "Implemented a throttle utility from scratch to manage high-frequency events and improve performance in real-time applications.",
+      //   tags: ["JavaScript", "Performance", "Algorithms", "Event Handling"],
+      //   bg: "#1c1c1c",
+      //   colSpan: 4,
+      // },
     ],
   },
 ];

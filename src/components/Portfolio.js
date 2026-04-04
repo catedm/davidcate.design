@@ -138,7 +138,7 @@ const Portfolio = ({ onClose }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ delay: 0.18, duration: 0.22 }}
-                  style={{ marginTop: "auto", padding: "2.5rem 2rem 2rem" }}
+                  style={{ marginTop: "auto", padding: "2.5rem 2rem 2rem", position: "relative", zIndex: 1 }}
                 >
                   <GridCellSubtitle style={{ fontSize: "0.85rem" }}>{selected.subtitle}</GridCellSubtitle>
                   <GridCellTitle style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", marginBottom: "1rem" }}>

@@ -39,7 +39,7 @@ const BaseRightCol = styled(motion.div)`
   background: url(${home2});
   background-size: cover;
   background-position: center;
-  width: 1000px;
+  width: 400px;
   height: 650px;
   margin-right: 1rem;
   border-radius: 1rem;

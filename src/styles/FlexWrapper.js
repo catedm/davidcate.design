@@ -26,6 +26,7 @@ export const FlexWrapper = styled(motion.div)`
   justify-content: center;
   align-items: flex-start;
   padding: 2rem 1rem;
+  gap: 1rem;
   width: 100%;
 
   @media (max-width: 710px) {
@@ -54,6 +55,16 @@ const BaseRightCol = styled(motion.div)`
 export const RightCol = styled(BaseRightCol)`
   border-radius: 1rem;
   border: ${props => props.vantaEffect && getBorder(props.vantaEffect.name)};
+`;
+
+export const TiltWrapperShell = styled.div`
+  flex-shrink: 0;
+
+  @media (max-width: 710px) {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 1rem;
+  }
 `;
 
 export const LeftCol = styled(motion.div)`

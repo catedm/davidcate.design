@@ -28,6 +28,18 @@ const App = () => {
   const [showPanel, setShowPanel] = useState(false);
   const vantaRef = useRef(null);
   const flexRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setResumeLayout(false);
+        setPortfolioLayout(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const commonSettings = {
     mouseControls: true,
     touchControls: true,
@@ -191,30 +203,31 @@ const App = () => {
                     />
                   </ButtonContainer>
                 </ButtonGroup>
-                <Card
-                  hideContent={hideContent}
-                  setResumeLayout={setResumeLayout}
-                  setPortfolioLayout={setPortfolioLayout}
-                  resumeLayout={resumeLayout}
-                  vantaEffect={currentEffectConfig}
-                />
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
+                  <Card
+                    hideContent={hideContent}
+                    setResumeLayout={setResumeLayout}
+                    setPortfolioLayout={setPortfolioLayout}
+                    resumeLayout={resumeLayout}
+                    vantaEffect={currentEffectConfig}
+                  />
+                  <ControlPanelWrapper
+                    animate={{
+                      width: showPanel && currentEffectConfig ? 420 : 0,
+                    }}
+                    transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <AnimatePresence>
+                      {showPanel && vantaEffect && (
+                        <ControlPanel
+                          currentEffect={currentEffectConfig?.name}
+                          vantaEffect={vantaEffect}
+                        />
+                      )}
+                    </AnimatePresence>
+                  </ControlPanelWrapper>
+                </div>
               </LeftCol>
-              <ControlPanelWrapper
-                animate={{
-                  width: showPanel && currentEffectConfig ? 420 : 0,
-                  marginLeft: showPanel && currentEffectConfig ? '1rem' : 0,
-                }}
-                transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <AnimatePresence>
-                  {showPanel && vantaEffect && (
-                    <ControlPanel
-                      currentEffect={currentEffectConfig?.name}
-                      vantaEffect={vantaEffect}
-                    />
-                  )}
-                </AnimatePresence>
-              </ControlPanelWrapper>
           </FlexWrapper>
         )}
       </Vanta>

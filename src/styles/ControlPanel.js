@@ -58,52 +58,90 @@ export const ColorPickerWrapper = styled.div`
 
 export const Slider = styled.input`
   width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.2);
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.12) 100%);
   outline: none;
   -webkit-appearance: none;
   cursor: pointer;
+  transition: box-shadow 0.2s ease;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+    border-radius: 2px;
+  }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+    width: 22px;
+    height: 14px;
+    border-radius: 6px;
     background: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    cursor: grab;
+    border: none;
+    margin-top: -5px;
+    box-shadow:
+      0 0 8px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
 
     &:hover {
-      transform: scale(1.2);
+      background: #a8d8ff;
+      box-shadow:
+        0 0 12px rgba(100, 180, 255, 0.9),
+        0 0 30px rgba(100, 180, 255, 0.4);
+      transform: scaleX(1.12) scaleY(1.2);
+    }
+
+    &:active {
+      cursor: grabbing;
       background: #4A9EFF;
+      box-shadow:
+        0 0 16px rgba(74, 158, 255, 1),
+        0 0 40px rgba(74, 158, 255, 0.5);
+      transform: scaleX(1.05) scaleY(1.15);
     }
   }
 
   &::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+    width: 22px;
+    height: 14px;
+    border-radius: 6px;
     background: #fff;
-    cursor: pointer;
+    cursor: grab;
     border: none;
-    transition: all 0.2s ease;
+    box-shadow:
+      0 0 8px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
 
     &:hover {
-      transform: scale(1.2);
+      background: #a8d8ff;
+      box-shadow:
+        0 0 12px rgba(100, 180, 255, 0.9),
+        0 0 30px rgba(100, 180, 255, 0.4);
+    }
+
+    &:active {
+      cursor: grabbing;
       background: #4A9EFF;
+      box-shadow:
+        0 0 16px rgba(74, 158, 255, 1),
+        0 0 40px rgba(74, 158, 255, 0.5);
     }
   }
 
   &::-webkit-slider-runnable-track {
-    height: 6px;
-    border-radius: 3px;
+    height: 4px;
+    border-radius: 2px;
+    background: transparent;
   }
 
   &::-moz-range-track {
-    height: 6px;
-    border-radius: 3px;
+    height: 4px;
+    border-radius: 2px;
+    background: transparent;
   }
 `;
 

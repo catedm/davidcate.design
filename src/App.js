@@ -12,16 +12,34 @@ import {
   FlexWrapper,
   RightCol,
   LeftCol,
-  ButtonContainer
+  ButtonContainer,
+  ButtonGroup,
+  ControlPanelWrapper,
+  TiltWrapperShell,
 } from "./styles";
-import { Card, Button, Resume } from "./components";
+import { Card, Button, Resume, ControlPanel, TiltWrapper, Portfolio } from "./components";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
+  const [portfolioLayout, setPortfolioLayout] = useState(false);
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
+  const [showPanel, setShowPanel] = useState(false);
   const vantaRef = useRef(null);
   const flexRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setResumeLayout(false);
+        setPortfolioLayout(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const commonSettings = {
     mouseControls: true,
     touchControls: true,
@@ -137,18 +155,22 @@ const App = () => {
     }
   };
 
+  const currentEffectConfig = vantaEffects[(index - 1 + vantaEffects.length) % vantaEffects.length];
+
   return (
     <>
       <Vanta ref={vantaRef}>
-        {resumeLayout && (
-          <FlexWrapper resumeLayout={resumeLayout}>
-            <Resume
-              showContent={showContent}
-              setResumeLayout={setResumeLayout}
-            />
+        {portfolioLayout && (
+          <FlexWrapper style={{ alignItems: "flex-start", alignSelf: "stretch" }}>
+            <Portfolio onClose={() => setPortfolioLayout(false)} />
           </FlexWrapper>
         )}
-        {!resumeLayout && (
+        {resumeLayout && (
+          <FlexWrapper resumeLayout={resumeLayout}>
+            <Resume setResumeLayout={setResumeLayout} />
+          </FlexWrapper>
+        )}
+        {!resumeLayout && !portfolioLayout && (
           <FlexWrapper
             variants={wrapper}
             initial="hidden"
@@ -156,25 +178,56 @@ const App = () => {
             resumeLayout={resumeLayout}
             ref={flexRef}
           >
-            <RightCol vantaEffect={vantaEffects[index - 1]} />
-            <LeftCol>
-              <ButtonContainer
-                onClick={() => {
-                  changeEffect(vantaEffect);
-                }}
-              >
-                <Button
-                  vantaEffects={vantaEffects}
-                  vantaEffect={vantaEffects[index - 1]}
-                />
-              </ButtonContainer>
-              <Card
-                hideContent={hideContent}
-                setResumeLayout={setResumeLayout}
-                resumeLayout={resumeLayout}
-                vantaEffect={vantaEffects[index - 1]}
-              />
-            </LeftCol>
+            <TiltWrapperShell>
+              <TiltWrapper style={{ borderRadius: "1rem" }}>
+                <RightCol vantaEffect={currentEffectConfig} style={{ margin: 0 }} />
+              </TiltWrapper>
+            </TiltWrapperShell>
+              <LeftCol>
+                <ButtonGroup>
+                  <ButtonContainer
+                    onClick={() => {
+                      changeEffect(vantaEffect);
+                    }}
+                  >
+                    <Button
+                      vantaEffect={currentEffectConfig}
+                    />
+                  </ButtonContainer>
+                  <ButtonContainer
+                    onClick={() => setShowPanel(prev => !prev)}
+                  >
+                    <Button
+                      vantaEffect={currentEffectConfig}
+                      text={showPanel ? "CLOSE" : "CUSTOMIZE"}
+                    />
+                  </ButtonContainer>
+                </ButtonGroup>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
+                  <Card
+                    hideContent={hideContent}
+                    setResumeLayout={setResumeLayout}
+                    setPortfolioLayout={setPortfolioLayout}
+                    resumeLayout={resumeLayout}
+                    vantaEffect={currentEffectConfig}
+                  />
+                  <ControlPanelWrapper
+                    animate={{
+                      width: showPanel && currentEffectConfig ? 420 : 0,
+                    }}
+                    transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  >
+                    <AnimatePresence>
+                      {showPanel && vantaEffect && (
+                        <ControlPanel
+                          currentEffect={currentEffectConfig?.name}
+                          vantaEffect={vantaEffect}
+                        />
+                      )}
+                    </AnimatePresence>
+                  </ControlPanelWrapper>
+                </div>
+              </LeftCol>
           </FlexWrapper>
         )}
       </Vanta>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button as ButtonWrapper } from "../styles";
 
-export const Button = ({ vantaEffect }) => {
+export const Button = ({ vantaEffect, text = "SWITCH IT UP" }) => {
   return (
     <div style={{ position: "relative", marginBottom: "1rem" }}>
       <div className="container">
@@ -22,7 +22,7 @@ export const Button = ({ vantaEffect }) => {
                 className="hl-line"
               />
             </svg>
-            <span>SWITCH IT UP</span>
+            <span>{text}</span>
           </ButtonWrapper>
         </div>
       </div>

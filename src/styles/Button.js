@@ -156,3 +156,13 @@ export const Button = styled(BaseButton)`
 export const ButtonContainer = styled.div`
   width: 180px;
 `;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  
+  @media (max-width: 710px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`;

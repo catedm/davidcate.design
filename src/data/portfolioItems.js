@@ -68,6 +68,7 @@ export const portfolioSections = [
         bg: "#0a1f2e",
         colSpan: 4,
         image: require("../assets/flexera.avif"),
+        caseStudy: true
       },
       {
         id: "localization",

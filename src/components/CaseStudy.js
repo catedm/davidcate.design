@@ -7,7 +7,7 @@ const BORDER = "rgba(255,255,255,0.08)";
 
 const Eyebrow = ({ children }) => (
   <p style={{
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: 600,
     letterSpacing: "0.13em",
     textTransform: "uppercase",
@@ -48,7 +48,7 @@ const CaseStudy = ({ item, onClose }) => {
         overflow: "hidden",
         display: "grid",
         gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.6fr)",
-        width: "min(1200px, 94vw)",
+        width: "min(1500px, 94vw)",
         height: "min(780px, 90vh)",
         color: "#fff",
         fontFamily: "'Rubik', -apple-system, sans-serif",
@@ -63,12 +63,28 @@ const CaseStudy = ({ item, onClose }) => {
         {/* Hero image */}
         <div style={{
           flex: "0 0 52%",
-          backgroundImage: item.image ? `url(${item.image})` : undefined,
-          backgroundColor: item.bg || "#0a1f2e",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundColor: BG,
           borderBottom: `1px solid ${BORDER}`,
-        }} />
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "1.5rem",
+        }}>
+          {item.image && (
+            <img
+              src={item.image}
+              alt={item.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                display: "block",
+                filter: "drop-shadow(0 0 12px rgba(255,255,255,0.18)) drop-shadow(0 2px 24px rgba(255,255,255,0.08))",
+              }}
+            />
+          )}
+        </div>
 
         {/* 2×2 stat grid */}
         <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr" }}>
@@ -89,10 +105,10 @@ const CaseStudy = ({ item, onClose }) => {
                 justifyContent: "center",
               }}
             >
-              <p style={{ margin: "0 0 0.3rem", fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)" }}>
+              <p style={{ margin: "0 0 0.3rem", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)" }}>
                 {label}
               </p>
-              <p style={{ margin: 0, fontSize: "0.88rem", fontWeight: 500, color: "#f5f5f7" }}>
+              <p style={{ margin: 0, fontSize: "1rem", fontWeight: 500, color: "#f5f5f7" }}>
                 {value}
               </p>
             </div>
@@ -114,10 +130,10 @@ const CaseStudy = ({ item, onClose }) => {
         >
           {/* Header */}
           <Eyebrow>Case Study</Eyebrow>
-          <h2 style={{ margin: "0 0 0.5rem", fontSize: "clamp(1.4rem, 2.4vw, 1.9rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.15, color: "#f5f5f7" }}>
+          <h2 style={{ margin: "0 0 0.5rem", fontSize: "clamp(1.6rem, 2.6vw, 2.1rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.15, color: "#f5f5f7" }}>
             {item.title}
           </h2>
-          <p style={{ margin: "0 0 1.1rem", fontSize: "0.88rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.6 }}>
+          <p style={{ margin: "0 0 1.1rem", fontSize: "0.95rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.6 }}>
             {item.subtitle}
           </p>
           <TagRow>
@@ -129,10 +145,10 @@ const CaseStudy = ({ item, onClose }) => {
           {/* Problem */}
           <div style={{ marginBottom: "1.75rem" }}>
             <Eyebrow>The Problem</Eyebrow>
-            <p style={{ margin: "0 0 0.85rem", fontSize: "0.93rem", lineHeight: 1.75, color: "rgba(255,255,255,0.52)" }}>
+            <p style={{ margin: "0 0 0.85rem", fontSize: "1rem", lineHeight: 1.8, color: "rgba(255,255,255,0.55)" }}>
               The legacy app lived in isolation — opening it meant a new tab, snapping users out of the product context entirely. Navigation broke. Branding fractured. The seam between systems was impossible to miss.
             </p>
-            <p style={{ margin: 0, fontSize: "0.93rem", lineHeight: 1.75, color: "rgba(255,255,255,0.38)" }}>
+            <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, color: "rgba(255,255,255,0.42)" }}>
               {item.description}
             </p>
           </div>
@@ -157,10 +173,10 @@ const CaseStudy = ({ item, onClose }) => {
                     borderBottom: i < constraints.length - 1 ? `1px solid ${BORDER}` : undefined,
                   }}
                 >
-                  <p style={{ margin: 0, fontSize: "0.78rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>
+                  <p style={{ margin: 0, fontSize: "0.88rem", fontWeight: 600, color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>
                     {title}
                   </p>
-                  <p style={{ margin: 0, fontSize: "0.8rem", lineHeight: 1.6, color: "rgba(255,255,255,0.32)" }}>
+                  <p style={{ margin: 0, fontSize: "0.9rem", lineHeight: 1.65, color: "rgba(255,255,255,0.42)" }}>
                     {desc}
                   </p>
                 </div>
@@ -182,10 +198,10 @@ const CaseStudy = ({ item, onClose }) => {
                     padding: "1rem 1.1rem",
                   }}
                 >
-                  <p style={{ margin: "0 0 0.35rem", fontSize: "0.82rem", fontWeight: 600, color: "#f5f5f7" }}>
+                  <p style={{ margin: "0 0 0.35rem", fontSize: "0.92rem", fontWeight: 600, color: "#f5f5f7" }}>
                     {title}
                   </p>
-                  <p style={{ margin: 0, fontSize: "0.78rem", lineHeight: 1.65, color: "rgba(255,255,255,0.35)" }}>
+                  <p style={{ margin: 0, fontSize: "0.88rem", lineHeight: 1.7, color: "rgba(255,255,255,0.42)" }}>
                     {desc}
                   </p>
                 </div>
@@ -203,10 +219,10 @@ const CaseStudy = ({ item, onClose }) => {
                 ["A repeatable pattern", "The approach became a documented, reusable template for future legacy surface integrations."],
               ].map(([title, desc], i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "110px 1fr", gap: "0.75rem", alignItems: "start" }}>
-                  <p style={{ margin: 0, fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", lineHeight: 1.5, paddingTop: 1 }}>
+                  <p style={{ margin: 0, fontSize: "0.92rem", fontWeight: 600, color: "rgba(255,255,255,0.7)", lineHeight: 1.5, paddingTop: 1 }}>
                     {title}
                   </p>
-                  <p style={{ margin: 0, fontSize: "0.82rem", lineHeight: 1.65, color: "rgba(255,255,255,0.33)" }}>
+                  <p style={{ margin: 0, fontSize: "0.93rem", lineHeight: 1.7, color: "rgba(255,255,255,0.45)" }}>
                     {desc}
                   </p>
                 </div>
@@ -216,7 +232,7 @@ const CaseStudy = ({ item, onClose }) => {
 
           {/* Takeaway */}
           <div style={{ padding: "1.1rem 1.25rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.025)", border: `1px solid ${BORDER}` }}>
-            <p style={{ margin: 0, fontSize: "0.85rem", lineHeight: 1.75, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+            <p style={{ margin: 0, fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255,255,255,0.45)", fontStyle: "italic" }}>
               "Great interfaces hide complexity — even when the systems behind them are fragmented."
             </p>
           </div>

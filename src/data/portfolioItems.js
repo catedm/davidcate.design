@@ -68,7 +68,34 @@ export const portfolioSections = [
         bg: "#0a1f2e",
         colSpan: 4,
         image: require("../assets/flexera.avif"),
-        caseStudy: true
+        caseStudy: true,
+        caseStudyData: {
+          problemText: "The legacy app lived in isolation — opening it meant a new tab, snapping users out of the product context entirely. Navigation broke. Branding fractured. The seam between systems was impossible to miss.",
+          stats: [
+            ["Stack",  "React + ASP.NET"],
+            ["Bridge", "iframe + postMessage"],
+            ["Scope",  "Full integration"],
+            ["Result", "Zero rewrite"],
+          ],
+          constraints: [
+            ["No full rewrite", "The legacy system was too embedded in business logic to touch."],
+            ["Divergent stacks", "ASP.NET on one side, React on the other — no shared primitives."],
+            ["Limited legacy control", "Source changes were constrained by scope, access, and risk."],
+            ["Zero tolerance for seams", "Users had no patience for any visible break in the experience."],
+          ],
+          approach: [
+            ["Invisible Boundaries", "Embedded via iframe — but every visual trace of the frame was eliminated. No scrollbars, no artifacts, no layout breaks."],
+            ["Real-Time Communication", "postMessage bridged the two runtimes silently. Auth events, state, and navigation signals flowed without any user-visible latency."],
+            ["Unified Navigation", "The React layer owned navigation entirely. The legacy app's own nav was suppressed and replaced with a single consistent surface."],
+            ["Modal System Override", "Dialogs originating from the legacy layer were intercepted and re-rendered in React — on-brand and fully accessible."],
+          ],
+          outcome: [
+            ["One platform experience", "Users moved through both systems without any visible transition — the seam disappeared entirely."],
+            ["Shipped without a rewrite", "Delivered on schedule with zero disruption to existing business logic or user workflows."],
+            ["A repeatable pattern", "The approach became a documented, reusable template for future legacy surface integrations."],
+          ],
+          takeaway: "Great interfaces hide complexity — even when the systems behind them are fragmented.",
+        },
       },
       {
         id: "localization",

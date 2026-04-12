@@ -23,19 +23,12 @@ const Divider = () => (
 );
 
 const CaseStudy = ({ item, onClose }) => {
-  const constraints = [
-    ["No full rewrite", "The legacy system was too embedded in business logic to touch."],
-    ["Divergent stacks", "ASP.NET on one side, React on the other — no shared primitives."],
-    ["Limited legacy control", "Source changes were constrained by scope, access, and risk."],
-    ["Zero tolerance for seams", "Users had no patience for any visible break in the experience."],
-  ];
-
-  const approach = [
-    ["Invisible Boundaries", "Embedded via iframe — but every visual trace of the frame was eliminated. No scrollbars, no artifacts, no layout breaks."],
-    ["Real-Time Communication", "postMessage bridged the two runtimes silently. Auth events, state, and navigation signals flowed without any user-visible latency."],
-    ["Unified Navigation", "The React layer owned navigation entirely. The legacy app's own nav was suppressed and replaced with a single consistent surface."],
-    ["Modal System Override", "Dialogs originating from the legacy layer were intercepted and re-rendered in React — on-brand and fully accessible."],
-  ];
+  const constraints = item.caseStudyData?.constraints ?? [];
+  const approach    = item.caseStudyData?.approach    ?? [];
+  const stats       = item.caseStudyData?.stats       ?? [];
+  const takeaway    = item.caseStudyData?.takeaway    ?? "";
+  const problemText = item.caseStudyData?.problemText ?? "";
+  const outcome     = item.caseStudyData?.outcome     ?? [];
 
   return (
     <motion.div
@@ -88,12 +81,7 @@ const CaseStudy = ({ item, onClose }) => {
 
         {/* 2×2 stat grid */}
         <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr" }}>
-          {[
-            ["Stack",  "React + ASP.NET"],
-            ["Bridge", "iframe + postMessage"],
-            ["Scope",  "Full product integration"],
-            ["Result", "Zero rewrite"],
-          ].map(([label, value], i) => (
+          {stats.map(([label, value], i) => (
             <div
               key={i}
               style={{
@@ -145,15 +133,18 @@ const CaseStudy = ({ item, onClose }) => {
           {/* Problem */}
           <div style={{ marginBottom: "1.75rem" }}>
             <Eyebrow>The Problem</Eyebrow>
-            <p style={{ margin: "0 0 0.85rem", fontSize: "1rem", lineHeight: 1.8, color: "rgba(255,255,255,0.55)" }}>
-              The legacy app lived in isolation — opening it meant a new tab, snapping users out of the product context entirely. Navigation broke. Branding fractured. The seam between systems was impossible to miss.
-            </p>
+            {problemText && (
+              <p style={{ margin: "0 0 0.85rem", fontSize: "1rem", lineHeight: 1.8, color: "rgba(255,255,255,0.55)" }}>
+                {problemText}
+              </p>
+            )}
             <p style={{ margin: 0, fontSize: "1rem", lineHeight: 1.8, color: "rgba(255,255,255,0.42)" }}>
               {item.description}
             </p>
           </div>
 
           {/* Constraints */}
+          {constraints.length > 0 && (
           <div style={{ marginBottom: "1.75rem" }}>
             <Eyebrow>Constraints</Eyebrow>
             <div style={{
@@ -183,8 +174,10 @@ const CaseStudy = ({ item, onClose }) => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Approach */}
+          {approach.length > 0 && (
           <div style={{ marginBottom: "1.75rem" }}>
             <Eyebrow>Approach</Eyebrow>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
@@ -208,16 +201,14 @@ const CaseStudy = ({ item, onClose }) => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Outcome */}
+          {outcome.length > 0 && (
           <div style={{ marginBottom: "1.75rem" }}>
             <Eyebrow>Outcome</Eyebrow>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              {[
-                ["One platform experience", "Users moved through both systems without any visible transition — the seam disappeared entirely."],
-                ["Shipped without a rewrite", "Delivered on schedule with zero disruption to existing business logic or user workflows."],
-                ["A repeatable pattern", "The approach became a documented, reusable template for future legacy surface integrations."],
-              ].map(([title, desc], i) => (
+              {outcome.map(([title, desc], i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "110px 1fr", gap: "0.75rem", alignItems: "start" }}>
                   <p style={{ margin: 0, fontSize: "0.92rem", fontWeight: 600, color: "rgba(255,255,255,0.7)", lineHeight: 1.5, paddingTop: 1 }}>
                     {title}
@@ -229,13 +220,16 @@ const CaseStudy = ({ item, onClose }) => {
               ))}
             </div>
           </div>
+          )}
 
           {/* Takeaway */}
+          {takeaway && (
           <div style={{ padding: "1.1rem 1.25rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.025)", border: `1px solid ${BORDER}` }}>
             <p style={{ margin: 0, fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255,255,255,0.45)", fontStyle: "italic" }}>
-              "Great interfaces hide complexity — even when the systems behind them are fragmented."
+              "{takeaway}"
             </p>
           </div>
+          )}
         </motion.div>
       </div>
 

@@ -27,18 +27,96 @@ export const portfolioSections = [
         image: require("../assets/cv.webp"),
         colSpan: 5,
       },
-      {
-        id: "copy-and-post",
-        title: "Social Content Platform",
-        type: "featured",
-        subtitle: "Co founded a full-stack system for automated content publishing",
-        description:
-          "Built a full-stack content generation and scheduling platform supporting automated publishing across multiple social channels. Designed a serverless scheduling system to reliably process and distribute high volumes of scheduled content.",
-        tags: ["React", "GraphQL", "AWS Lambda", "Aurora (RDS)", "Serverless Architecture", "System Design"],
-        bg: "#1e0533",
-        image: require("../assets/copypost.png"),
-        colSpan: 5,
-      },
+{
+  id: "copy-post-platform",
+  title: "Copy & Post Platform",
+  type: "system",
+  subtitle: "Designing a content automation system for social publishing",
+  description:
+    "Built a full-stack SaaS platform that transforms user input into structured, platform-ready social media content. Designed the system to handle AI-generated text, formatting constraints, and API-driven publishing workflows across external platforms.",
+  tags: [
+    "React",
+    "TypeScript",
+    "GraphQL",
+    "AWS",
+    "System Design",
+    "API Integration",
+    "AI Workflows",
+    "Product Development",
+  ],
+  bg: "#1a0f2e",
+  colSpan: 4,
+  image: require("../assets/copypost.png"),
+  caseStudy: true,
+  caseStudyData: {
+    problemText:
+      "Creating and publishing content across platforms like Facebook was fragmented and time-consuming. Users had to manually format posts, handle emojis inconsistently, and navigate platform-specific constraints — making scalable content creation difficult.",
+
+    stats: [
+      ["Stack", "React + GraphQL + AWS"],
+      ["Core", "AI-assisted content generation"],
+      ["Surface", "Web app + publishing API"],
+      ["Scope", "End-to-end SaaS platform"],
+    ],
+
+    constraints: [
+      [
+        "Platform inconsistencies",
+        "Each social platform handled formatting, emojis, and text structure differently.",
+      ],
+      [
+        "Unstructured input",
+        "User input varied widely — requiring transformation into consistent, publishable output.",
+      ],
+      [
+        "API limitations",
+        "Third-party APIs (e.g. Facebook) imposed strict formatting and publishing constraints.",
+      ],
+      [
+        "Real-time feedback",
+        "Users needed immediate previews of how content would render before publishing.",
+      ],
+    ],
+
+    approach: [
+      [
+        "Structured Content Pipeline",
+        "Designed a transformation layer that converts raw user input into structured content blocks — enabling consistent formatting across platforms.",
+      ],
+      [
+        "AI-Assisted Generation",
+        "Integrated AI workflows to generate and refine captions, while maintaining control over formatting and output quality.",
+      ],
+      [
+        "Platform-Aware Rendering",
+        "Built logic to adapt content based on platform-specific rules — including emoji handling, spacing, and text constraints.",
+      ],
+      [
+        "API-Driven Publishing",
+        "Connected the system to external APIs to enable direct publishing, handling edge cases and failures gracefully.",
+      ],
+    ],
+
+    outcome: [
+      [
+        "Streamlined content creation",
+        "Reduced friction from idea → published post by consolidating tools into a single workflow.",
+      ],
+      [
+        "Consistent output quality",
+        "Ensured posts rendered correctly across platforms despite inconsistent external rules.",
+      ],
+      [
+        "Scalable foundation",
+        "Created a system capable of expanding to additional platforms and content types.",
+      ],
+    ],
+
+    takeaway:
+      "Content systems aren’t just about generating text — they’re about transforming messy human input into structured, predictable outputs that work across unpredictable external systems.",
+  },
+},
+
       {
         id: "auth-system",
         title: "Authentication & Login System",

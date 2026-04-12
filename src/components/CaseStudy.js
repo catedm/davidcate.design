@@ -224,9 +224,10 @@ const CaseStudy = ({ item, onClose }) => {
 
           {/* Takeaway */}
           {takeaway && (
-          <div style={{ padding: "1.1rem 1.25rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.025)", border: `1px solid ${BORDER}` }}>
-            <p style={{ margin: 0, fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255,255,255,0.45)", fontStyle: "italic" }}>
-              "{takeaway}"
+          <div style={{ padding: "1.25rem 1.5rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.14)` }}>
+            <Eyebrow>Takeaway</Eyebrow>
+            <p style={{ margin: 0, fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>
+              {takeaway}
             </p>
           </div>
           )}

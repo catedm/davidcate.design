@@ -3,18 +3,97 @@ export const portfolioSections = [
     name: "featured",
     title: "Featured Projects",
     items: [
+
       {
-        id: "scenario-planning",
-        title: "Scenario Planning Platform",
-        type: "featured",
-        subtitle: "Real-time planning across complex enterprise datasets",
-        description:
-          "Design and delivery of a real-time scenario planning system enabling enterprise teams to model capacity, allocation, and timelines across complex datasets. Built cross-repo frontend architecture and coordinated with backend reporting systems to unlock flexible, interactive planning workflows.",
-        tags: ["React", "TypeScript", "System Design", "Data Visualization", "Frontend Architecture", "Cross-Team Collaboration"],
-        bg: "#0c1b33",
-        image: require("../assets/rmsp-scenario.webp"),
-        colSpan: 7,
-      },
+  id: "scenario-planning-filters",
+  title: "Scenario Planning Filters",
+  type: "system",
+  subtitle: "Designing cross-view filtering for complex planning workflows",
+  description:
+    "Designed and implemented a cross-system filtering architecture that enabled dynamic, ad-hoc data exploration across multiple planning views. Coordinated frontend and backend changes across multiple repositories to support early-access enterprise customers.",
+  tags: [
+    "React",
+    "TypeScript",
+    "System Design",
+    "Frontend Architecture",
+    "Data Modeling",
+    "Cross-Team Collaboration",
+    "Performance",
+    "Enterprise UI",
+  ],
+  bg: "#0f1f1a",
+  colSpan: 7,
+  image: require("../assets/rmsp-scenario.webp"),
+  caseStudy: true,
+  caseStudyData: {
+    problemText:
+      "Scenario Planning required users to explore complex resource data across multiple views — but there was no way to dynamically filter data at the reporting layer. Without ad-hoc filtering, users were locked into static views, making real planning workflows slow, rigid, and in some cases impossible.",
+
+    stats: [
+      ["Surface", "Timeline + Capacity views"],
+      ["Scope", "5 repos (FE + BE + reporting)"],
+      ["Data Flow", "Cross-view synchronization"],
+      ["Result", "EAP unblock"],
+    ],
+
+    constraints: [
+      [
+        "Distributed architecture",
+        "Filtering logic spanned multiple frontend and backend repositories, including a Kotlin-based reporting engine.",
+      ],
+      [
+        "No existing pattern",
+        "There was no established approach for ad-hoc filtering at the reporting layer.",
+      ],
+      [
+        "Mid-development changes",
+        "Customer feedback during EAP required adding bi-directional filter syncing across views.",
+      ],
+      [
+        "Performance sensitivity",
+        "Large datasets meant filtering logic had to be efficient and avoid unnecessary re-renders or slow queries.",
+      ],
+    ],
+
+    approach: [
+      [
+        "Filter State Architecture",
+        "Designed a centralized filter model that could be shared across views while remaining flexible enough for different data contexts.",
+      ],
+      [
+        "Cross-View Synchronization",
+        "Implemented bi-directional syncing between Timeline and Capacity views so filters applied in one context reflected immediately in the other.",
+      ],
+      [
+        "Reporting Layer Integration",
+        "Collaborated with backend engineers to extend the reporting engine, enabling dynamic query filtering without degrading performance.",
+      ],
+      [
+        "Incremental Delivery",
+        "Scoped and delivered the system across multiple repositories in parallel, coordinating work across a small team under tight timelines.",
+      ],
+    ],
+
+    outcome: [
+      [
+        "Unlocked interactive planning",
+        "Users could dynamically explore and refine scenarios instead of relying on static reports.",
+      ],
+      [
+        "Unblocked EAP launch",
+        "Delivered a critical feature required for early-access customers to adopt Scenario Planning.",
+      ],
+      [
+        "Foundation for future features",
+        "Established a reusable filtering pattern across the product.",
+      ],
+    ],
+
+    takeaway:
+      "Complex UIs aren’t just about rendering data — they’re about giving users control over it. The right system turns static views into interactive tools.",
+  },
+}
+      ,
       {
         id: "capacity-view",
         title: "Capacity & Allocation Insights",
@@ -45,7 +124,7 @@ export const portfolioSections = [
     "Product Development",
   ],
   bg: "#1a0f2e",
-  colSpan: 4,
+  colSpan: 5,
   image: require("../assets/copypost.png"),
   caseStudy: true,
   caseStudyData: {

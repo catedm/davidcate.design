@@ -39,7 +39,7 @@ export const ResumeCard = styled(motion.div)`
 `;
 
 export const CardEyebrow = styled.p`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -48,20 +48,20 @@ export const CardEyebrow = styled.p`
 `;
 
 export const EduSchool = styled.h2`
-  font-size: 17px;
+  font-size: 21px;
   font-weight: 600;
   color: #fff;
   margin: 0 0 0.4rem;
 `;
 
 export const EduDegree = styled.p`
-  font-size: 14px;
+  font-size: 17px;
   color: rgba(255,255,255,0.6);
   margin: 0 0 0.25rem;
 `;
 
 export const EduMinor = styled.p`
-  font-size: 14px;
+  font-size: 17px;
   color: rgba(255,255,255,0.4);
   margin: 0;
 `;
@@ -74,7 +74,7 @@ export const Timeline = styled.div`
 
 export const TimelineEntry = styled.div`
   display: grid;
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 1rem;
 
   @media (max-width: 500px) {
@@ -83,7 +83,7 @@ export const TimelineEntry = styled.div`
 `;
 
 export const DateRange = styled.p`
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(255,255,255,0.35);
   margin: 0;
   padding-top: 2px;
@@ -98,7 +98,7 @@ export const RoleBlock = styled.div`
 `;
 
 export const RoleTitle = styled.h3`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: #fff;
   margin: 0;
@@ -116,7 +116,7 @@ export const RoleTitle = styled.h3`
 `;
 
 export const RoleCompany = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(255,255,255,0.45);
   margin: 0 0 0.35rem;
 `;
@@ -129,7 +129,7 @@ export const RoleBullets = styled.ul`
   gap: 0.2rem;
 
   li {
-    font-size: 13px;
+    font-size: 15px;
     color: rgba(255,255,255,0.55);
     line-height: 1.55;
   }
@@ -155,7 +155,7 @@ export const SkillGroup = styled.div`
 `;
 
 export const SkillGroupLabel = styled.p`
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -170,8 +170,8 @@ export const SkillTags = styled.div`
 `;
 
 export const SkillTag = styled.span`
-  font-size: 12px;
-  padding: 4px 11px;
+  font-size: 14px;
+  padding: 5px 13px;
   border-radius: 999px;
   background: ${props => (accentMap[props.accent] ?? accentMap.neutral).bg};
   border: 1px solid ${props => (accentMap[props.accent] ?? accentMap.neutral).border};

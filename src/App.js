@@ -17,12 +17,18 @@ import {
   ControlPanelWrapper,
   TiltWrapperShell,
 } from "./styles";
-import { Card, Button, Resume, ControlPanel, TiltWrapper, Portfolio } from "./components";
+import { Card, Button, Resume, ControlPanel, TiltWrapper, Portfolio, CaseStudy } from "./components";
+import { portfolioSections } from "./data/portfolioItems";
 import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [resumeLayout, setResumeLayout] = useState(false);
   const [portfolioLayout, setPortfolioLayout] = useState(false);
+  const [homeCaseStudy, setHomeCaseStudy] = useState(null);
+
+  const latestCaseStudyItem = portfolioSections
+    .flatMap((s) => s.items)
+    .find((item) => item.id === "scenario-planning-filters");
   const [vantaEffect, setVantaEffect] = useState(null);
   const [index, setIndex] = useState(1);
   const [showPanel, setShowPanel] = useState(false);
@@ -159,6 +165,11 @@ const App = () => {
 
   return (
     <>
+      <AnimatePresence>
+        {homeCaseStudy && (
+          <CaseStudy item={homeCaseStudy} onClose={() => setHomeCaseStudy(null)} />
+        )}
+      </AnimatePresence>
       <Vanta ref={vantaRef}>
         {portfolioLayout && (
           <FlexWrapper style={{ alignItems: "flex-start", alignSelf: "stretch" }}>
@@ -210,6 +221,7 @@ const App = () => {
                     setPortfolioLayout={setPortfolioLayout}
                     resumeLayout={resumeLayout}
                     vantaEffect={currentEffectConfig}
+                    onOpenCaseStudy={() => setHomeCaseStudy(latestCaseStudyItem)}
                   />
                   <ControlPanelWrapper
                     animate={{

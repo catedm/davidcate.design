@@ -54,6 +54,7 @@ const BaseCard = styled.div`
   height: 575px;
   border: 2px solid #fff;
   color: #fff;
+  position: relative;
 
   @media (max-width: 710px) {
     height: auto;

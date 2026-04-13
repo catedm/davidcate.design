@@ -84,5 +84,16 @@ export const GlobalStyles = createGlobalStyle`
         margin-top: 1rem;
         width: 100%;
       }
+      /* Control panel: hide desktop (side-by-side) version */
+      .desktop-control-panel {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 711px) {
+      /* Control panel: hide mobile (stacked) version */
+      .mobile-control-panel {
+        display: none !important;
+      }
     }
 `;

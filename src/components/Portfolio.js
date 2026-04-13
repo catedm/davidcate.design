@@ -127,12 +127,10 @@ const Portfolio = ({ onClose }) => {
               }}
             >
               {caseStudyItem ? (
-                <div style={{ pointerEvents: "auto" }}>
-                  <CaseStudy
-                    item={caseStudyItem}
-                    onClose={() => setCaseStudyItem(null)}
-                  />
-                </div>
+                <CaseStudy
+                  item={caseStudyItem}
+                  onClose={() => setCaseStudyItem(null)}
+                />
               ) : (
                 <ExpandedCard
                   layoutId={`card-${selected.id}`}

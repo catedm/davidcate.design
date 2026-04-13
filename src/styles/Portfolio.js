@@ -15,7 +15,6 @@ export const PortfolioScrim = styled(motion.div)`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
   z-index: 99;
   cursor: pointer;
 `;
@@ -62,7 +61,6 @@ export const GridCell = styled(motion.div)`
   justify-content: flex-end;
   padding: 1.25rem;
   color: #fff;
-  will-change: transform;
   grid-column: span ${(p) => p.colSpan || 6};
   grid-row: span 2;
 

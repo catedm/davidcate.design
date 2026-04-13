@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { CloseButton, TagRow, Tag } from "../styles/Portfolio";
 
@@ -30,24 +30,30 @@ const CaseStudy = ({ item, onClose }) => {
   const problemText = item.caseStudyData?.problemText ?? "";
   const outcome     = item.caseStudyData?.outcome     ?? [];
 
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
   return (
     <motion.div
-      layoutId={`card-${item.id}`}
-      transition={{ type: "spring", stiffness: 280, damping: 32 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
       style={{
         background: BG,
-        border: `1px solid ${BORDER}`,
-        borderRadius: "1.25rem",
         overflow: "hidden",
         display: "grid",
         gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.6fr)",
-        width: "min(1500px, 94vw)",
-        height: "min(780px, 90vh)",
+        position: "fixed",
+        inset: 0,
+        zIndex: 102,
         color: "#fff",
         fontFamily: "'Rubik', -apple-system, sans-serif",
-        position: "relative",
-        flexShrink: 0,
-        willChange: "transform",
+        willChange: "opacity",
+        pointerEvents: "auto",
       }}
     >
       {/* ── Left column ── */}
@@ -107,6 +113,7 @@ const CaseStudy = ({ item, onClose }) => {
       {/* ── Right column (scrollable) ── */}
       <div style={{
         overflowY: "auto",
+        minHeight: 0,
         padding: "2rem 2.25rem 2.5rem",
         scrollbarWidth: "thin",
         scrollbarColor: "rgba(255,255,255,0.08) transparent",
@@ -234,7 +241,7 @@ const CaseStudy = ({ item, onClose }) => {
         </motion.div>
       </div>
 
-      <CloseButton onClick={onClose} style={{ position: "absolute", top: "1rem", right: "1rem", zIndex: 5 }}>
+      <CloseButton onClick={onClose} style={{ position: "fixed", top: "1.25rem", right: "1.25rem", zIndex: 5 }}>
         ✕
       </CloseButton>
     </motion.div>

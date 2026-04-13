@@ -44,10 +44,10 @@ data-heavy systems, auth platforms, and design systems.</p>
         </p>
         <ButtonGroup>
           <Button vantaEffect={vantaEffect} onClick={() => setResumeLayout(true)}>
-            <span>Resume</span>
+            <span>RESUME</span>
           </Button>
           <Button vantaEffect={vantaEffect} onClick={() => setPortfolioLayout(true)}>
-            <span>Portfolio</span>
+            <span>PORTFOLIO</span>
           </Button>
         </ButtonGroup>
         {onOpenCaseStudy && (

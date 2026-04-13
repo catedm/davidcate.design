@@ -214,6 +214,17 @@ const App = () => {
                     />
                   </ButtonContainer>
                 </ButtonGroup>
+                {/* Mobile-only: panel below buttons */}
+                <div className="mobile-control-panel">
+                  <AnimatePresence>
+                    {showPanel && vantaEffect && (
+                      <ControlPanel
+                        currentEffect={currentEffectConfig?.name}
+                        vantaEffect={vantaEffect}
+                      />
+                    )}
+                  </AnimatePresence>
+                </div>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
                   <Card
                     hideContent={hideContent}
@@ -224,6 +235,7 @@ const App = () => {
                     onOpenCaseStudy={() => setHomeCaseStudy(latestCaseStudyItem)}
                   />
                   <ControlPanelWrapper
+                    className="desktop-control-panel"
                     animate={{
                       width: showPanel && currentEffectConfig ? 420 : 0,
                     }}

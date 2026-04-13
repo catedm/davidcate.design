@@ -53,6 +53,7 @@ data-heavy systems, auth platforms, and design systems.</p>
         {onOpenCaseStudy && (
           <button
             onClick={onOpenCaseStudy}
+            className="case-study-btn"
             style={{
               position: "absolute",
               bottom: "2rem",

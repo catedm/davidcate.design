@@ -1,7 +1,7 @@
 import React from "react";
 import { Card as CardFace, Icons, Button, ButtonGroup } from "../styles";
 
-const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout }) => {
+const Card = ({ vantaEffect, setResumeLayout, setPortfolioLayout, onOpenCaseStudy }) => {
   return (
     <>
         <CardFace vantaEffect={vantaEffect}>
@@ -50,6 +50,35 @@ data-heavy systems, auth platforms, and design systems.</p>
             <span>Portfolio</span>
           </Button>
         </ButtonGroup>
+        {onOpenCaseStudy && (
+          <button
+            onClick={onOpenCaseStudy}
+            style={{
+              position: "absolute",
+              bottom: "2rem",
+              left: "2rem",
+              right: "2rem",
+              background: "none",
+              border: "1px solid rgba(255,255,255,0.35)",
+              borderRadius: "0.65rem",
+              padding: "0.75rem 1rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: "#fff",
+              fontSize: "1.5rem",
+              fontFamily: "'Rubik', sans-serif",
+              letterSpacing: "0.02em",
+              transition: "background 0.18s, border-color 0.18s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.65)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "none"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)"; }}
+          >
+            <span style={{ fontSize: "1rem" }}>▶</span>
+            <span><strong style={{ fontWeight: 600 }}>Latest Case Study:</strong> Scenario Planning Filters</span>
+          </button>
+        )}
         </CardFace>
     </>
   );

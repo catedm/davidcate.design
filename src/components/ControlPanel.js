@@ -87,7 +87,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
   const renderWavesControls = () => (
     <>
       <ControlGroup id="control-group-wave-height">
-        <Label id="control-label-wave-height">Wave Height: {vantaEffect.options?.waveHeight?.toFixed(1) || 20}</Label>
+        <Label id="control-label-wave-height">Wave Height</Label>
         <Slider
           id="control-slider-wave-height"
           type="range"
@@ -99,7 +99,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-wave-speed">
-        <Label id="control-label-wave-speed">Wave Speed: {vantaEffect.options?.waveSpeed?.toFixed(1) || 1.5}</Label>
+        <Label id="control-label-wave-speed">Wave Speed</Label>
         <Slider
           id="control-slider-wave-speed"
           type="range"
@@ -111,7 +111,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-shininess">
-        <Label id="control-label-shininess">Shininess: {vantaEffect.options?.shininess?.toFixed(0) || 50}</Label>
+        <Label id="control-label-shininess">Shininess</Label>
         <Slider
           id="control-slider-shininess"
           type="range"
@@ -123,7 +123,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-zoom">
-        <Label id="control-label-zoom">Zoom: {vantaEffect.options?.zoom?.toFixed(2) || 0.75}</Label>
+        <Label id="control-label-zoom">Zoom</Label>
         <Slider
           id="control-slider-zoom"
           type="range"
@@ -156,7 +156,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ToggleRow>
       <ControlGroup id="control-group-points">
-        <Label id="control-label-points">Points: {vantaEffect.options?.points?.toFixed(0) || 10}</Label>
+        <Label id="control-label-points">Points</Label>
         <Slider
           id="control-slider-points"
           type="range"
@@ -168,7 +168,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-max-distance">
-        <Label id="control-label-max-distance">Max Distance: {vantaEffect.options?.maxDistance?.toFixed(0) || 20}</Label>
+        <Label id="control-label-max-distance">Max Distance</Label>
         <Slider
           id="control-slider-max-distance"
           type="range"
@@ -180,7 +180,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-spacing">
-        <Label id="control-label-spacing">Spacing: {vantaEffect.options?.spacing?.toFixed(0) || 15}</Label>
+        <Label id="control-label-spacing">Spacing</Label>
         <Slider
           id="control-slider-spacing"
           type="range"
@@ -197,7 +197,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
   const renderHaloControls = () => (
     <>
       <ControlGroup id="control-group-speed">
-        <Label id="control-label-speed">Speed: {vantaEffect.options?.speed?.toFixed(1) || 1}</Label>
+        <Label id="control-label-speed">Speed</Label>
         <Slider
           id="control-slider-speed"
           type="range"
@@ -209,7 +209,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-amplitude">
-        <Label id="control-label-amplitude">Amplitude: {vantaEffect.options?.amplitudeFactor?.toFixed(1) || 1}</Label>
+        <Label id="control-label-amplitude">Amplitude</Label>
         <Slider
           id="control-slider-amplitude"
           type="range"
@@ -221,7 +221,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-ring">
-        <Label id="control-label-ring">Ring Factor: {vantaEffect.options?.ringFactor?.toFixed(1) || 1}</Label>
+        <Label id="control-label-ring">Ring Factor</Label>
         <Slider
           id="control-slider-ring"
           type="range"
@@ -233,7 +233,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-size">
-        <Label id="control-label-size">Size: {vantaEffect.options?.size?.toFixed(1) || 1}</Label>
+        <Label id="control-label-size">Size</Label>
         <Slider
           id="control-slider-size"
           type="range"
@@ -272,7 +272,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
   const renderBirdsControls = () => (
     <>
       <ControlGroup id="control-group-bird-size">
-        <Label id="control-label-bird-size">Bird Size: {vantaEffect.options?.birdSize?.toFixed(1) || 1}</Label>
+        <Label id="control-label-bird-size">Bird Size</Label>
         <Slider
           id="control-slider-bird-size"
           type="range"
@@ -284,7 +284,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-wing-span">
-        <Label id="control-label-wing-span">Wing Span: {vantaEffect.options?.wingSpan?.toFixed(0) || 30}</Label>
+        <Label id="control-label-wing-span">Wing Span</Label>
         <Slider
           id="control-slider-wing-span"
           type="range"
@@ -296,7 +296,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-speed-limit">
-        <Label id="control-label-speed-limit">Speed Limit: {vantaEffect.options?.speedLimit?.toFixed(0) || 5}</Label>
+        <Label id="control-label-speed-limit">Speed Limit</Label>
         <Slider
           id="control-slider-speed-limit"
           type="range"
@@ -366,7 +366,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ToggleRow>
       <ControlGroup id="control-group-size">
-        <Label id="control-label-size">Dot Size: {vantaEffect.options?.size?.toFixed(1) || 3}</Label>
+        <Label id="control-label-size">Dot Size</Label>
         <Slider
           id="control-slider-size"
           type="range"
@@ -378,7 +378,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-spacing">
-        <Label id="control-label-spacing">Spacing: {vantaEffect.options?.spacing?.toFixed(0) || 35}</Label>
+        <Label id="control-label-spacing">Spacing</Label>
         <Slider
           id="control-slider-spacing"
           type="range"
@@ -419,7 +419,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
   const renderFogControls = () => (
     <>
       <ControlGroup id="control-group-speed">
-        <Label id="control-label-speed">Speed: {vantaEffect.options?.speed?.toFixed(1) || 1}</Label>
+        <Label id="control-label-speed">Speed</Label>
         <Slider
           id="control-slider-speed"
           type="range"
@@ -431,7 +431,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-blur">
-        <Label id="control-label-blur">Blur: {vantaEffect.options?.blurFactor?.toFixed(2) || 0.6}</Label>
+        <Label id="control-label-blur">Blur</Label>
         <Slider
           id="control-slider-blur"
           type="range"
@@ -443,7 +443,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         />
       </ControlGroup>
       <ControlGroup id="control-group-zoom">
-        <Label id="control-label-zoom">Zoom: {vantaEffect.options?.zoom?.toFixed(2) || 1}</Label>
+        <Label id="control-label-zoom">Zoom</Label>
         <Slider
           id="control-slider-zoom"
           type="range"
@@ -509,7 +509,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
         return (
           <>
             <ControlGroup id="control-group-speed">
-              <Label id="control-label-speed">Speed: {vantaEffect.options?.speed?.toFixed(1) || 1}</Label>
+              <Label id="control-label-speed">Speed</Label>
               <Slider
                 id="control-slider-speed"
                 type="range"
@@ -521,7 +521,7 @@ export const ControlPanel = ({ currentEffect, vantaEffect, onUpdate }) => {
               />
             </ControlGroup>
             <ControlGroup id="control-group-size">
-              <Label id="control-label-size">Size: {vantaEffect.options?.size?.toFixed(1) || 1.5}</Label>
+              <Label id="control-label-size">Size</Label>
               <Slider
                 id="control-slider-size"
                 type="range"

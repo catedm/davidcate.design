@@ -116,6 +116,10 @@ const BaseButton = styled.button`
   outline: none;
   transition: 0.4s ease-in-out;
 
+  @media (max-width: 710px) {
+    width: 100%;
+  }
+
   &:hover {
     transition: 0.4s ease-in-out;
 
@@ -155,6 +159,10 @@ export const Button = styled(BaseButton)`
 
 export const ButtonContainer = styled.div`
   width: 180px;
+
+  @media (max-width: 710px) {
+    width: 100%;
+  }
 `;
 
 export const ButtonGroup = styled.div`

@@ -66,4 +66,23 @@ export const GlobalStyles = createGlobalStyle`
             font-size: 25px;
         }
     }
+
+    /* CaseStudy responsive grid */
+    @media (max-width: 710px) {
+      .case-study-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .case-study-left-col {
+        display: none !important;
+      }
+      /* Card latest case study button: drop absolute positioning on mobile */
+      .case-study-btn {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin-top: 1rem;
+        width: 100%;
+      }
+    }
 `;

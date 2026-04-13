@@ -55,9 +55,10 @@ const CaseStudy = ({ item, onClose }) => {
         willChange: "opacity",
         pointerEvents: "auto",
       }}
+      className="case-study-grid"
     >
       {/* ── Left column ── */}
-      <div style={{ display: "flex", flexDirection: "column", borderRight: `1px solid ${BORDER}`, overflow: "hidden" }}>
+      <div className="case-study-left-col" style={{ display: "flex", flexDirection: "column", borderRight: `1px solid ${BORDER}`, overflow: "hidden" }}>
 
         {/* Hero image */}
         <div style={{
